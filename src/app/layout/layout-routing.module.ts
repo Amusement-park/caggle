@@ -8,6 +8,10 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'dashboard' },
+            { path: 'competition', loadChildren: '../competition/competition.module#CompetitionModule' },
+            { path: 'discussion', loadChildren: '../discussion/discussion.module#DiscussionModule' },
+            { path: 'ranking', loadChildren: '../ranking/ranking.module#RankingModule' },
+
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },

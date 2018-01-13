@@ -10,17 +10,17 @@
         </form> -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-none d-xl-block">
-                <a href="#" class="nav-link" style="padding: .375rem 1rem !important;">
+                <a routerLink="/competition" [routerLinkActive]="['router-link-active']" class="nav-link" style="padding: .375rem 1rem !important;">
                     {{ 'Competitions' | translate }}
                 </a>
             </li>
             <li class="nav-item d-none d-xl-block">
-                <a href="#" class="nav-link" style="padding: .375rem 1rem !important;">
+                <a routerLink="/discussion" [routerLinkActive]="['router-link-active']" class="nav-link" style="padding: .375rem 1rem !important;">
                     {{ 'Discussion' | translate }}
                 </a>
             </li>
             <li class="nav-item d-none d-xl-block">
-                <a href="#" class="nav-link" style="padding: .375rem 1rem !important;">
+                <a routerLink="/ranking" [routerLinkActive]="['router-link-active']" class="nav-link" style="padding: .375rem 1rem !important;">
                     {{ 'Ranking' | translate }}
                 </a>
             </li>
