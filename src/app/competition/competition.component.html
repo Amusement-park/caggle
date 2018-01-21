@@ -19,8 +19,8 @@
                 <tbody>
                     <tr>
                         <th scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></th>
-                        <td colspan="2"> <p> Mercari Price Suggestion Challenge <br> Can you automatically suggest product prices to online sellers? <br> featured   1 month ago tags </p></td>
-                        <td> <p> $10,0000 <br> 2,1023 teams </p> </td>
+                        <td colspan="2"> {{ competitionService.getCompetition() | json }} </td>
+                        <td> {{ competitionService.getCompetition().headline }}, {{ competitionService.getCompetition().description }} </td>
                     </tr>
                     <tr>
                         <th scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></th>

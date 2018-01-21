@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { CompetitionServiceProvider } from './competition.service.provider'
 import { CompetitionService } from './competition.service'
+import { Competition } from './competition'
 import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
 
 @Component({
@@ -12,8 +13,8 @@ import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
     <p>{{ data }}</p>
   `,
   */
-  template: '{{ competitionService.getCompetition() | json }}',
-  // templateUrl: './competition.component.html',
+  // template: '{{ competitionService.getCompetition() | json }}',
+  templateUrl: './competition.component.html',
   styleUrls: ['./competition.component.scss'],
   providers: [
       // { provide: CompetitionService, useClass: CompetitionService }
@@ -26,14 +27,16 @@ import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
 export class CompetitionComponent implements OnInit {
 
   data: string;
-  competitions: string;
+  competitions: Competition;
 
   constructor(@Inject(DB_CONFIG) public dbConfig: DBConfig, @Optional() private competitionService: CompetitionService) {
     // @Inject('myConfig') public myConfig: string
     // console.log(dbConfig);
     if (this.competitionService) {
       console.log(competitionService.getCompetition());
-      // this.competitions = this.competitionService.getCompetition();
+      // <p> Mercari Price Suggestion Challenge <br> Can you automatically suggest product prices to online sellers? <br> featured   1 month ago tags </p></td>
+      // <td> <p> $10,0000 <br> 2,1023 teams </p>
+      this.competitions = this.competitionService.getCompetition();
     }
     else {
       console.log('competition service is not implementation');
