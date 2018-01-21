@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CompetitionServiceProvider } from './competition.service.provider'
 import { CompetitionService } from './competition.service'
-import { DBConfig, COMP_DB_CONFIG } from './competition.config'
+import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
 
 @Component({
   selector: 'app-competition',
@@ -17,16 +17,17 @@ import { DBConfig, COMP_DB_CONFIG } from './competition.config'
   styleUrls: ['./competition.component.scss'],
   providers: [
       // { provide: CompetitionService, useClass: CompetitionService }
-     ,{ provide: DBConfig, useValue: COMP_DB_CONFIG }
+     // ,{ provide: DBConfig, useValue: COMP_DB_CONFIG }
      ,{ provide: 'isDev', useValue: true },
-     CompetitionServiceProvider
+     ,CompetitionServiceProvider
+     ,DBConfigProvider
   ]
 })
 export class CompetitionComponent implements OnInit {
 
   data: string;
 
-  constructor(private competitionService: CompetitionService, public dbConfig: DBConfig) {
+  constructor(@Inject(DB_CONFIG) public dbConfig: DBConfig, private competitionService: CompetitionService) {
     // @Inject('myConfig') public myConfig: string
     // console.log(dbConfig);
     console.log(competitionService.getCompetition());
