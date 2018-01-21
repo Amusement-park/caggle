@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { CompetitionServiceProvider } from './competition.service.provider'
 import { CompetitionService } from './competition.service'
 import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
@@ -26,11 +26,18 @@ import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
 export class CompetitionComponent implements OnInit {
 
   data: string;
+  competitions: string;
 
-  constructor(@Inject(DB_CONFIG) public dbConfig: DBConfig, private competitionService: CompetitionService) {
+  constructor(@Inject(DB_CONFIG) public dbConfig: DBConfig, @Optional() private competitionService: CompetitionService) {
     // @Inject('myConfig') public myConfig: string
     // console.log(dbConfig);
-    console.log(competitionService.getCompetition());
+    if (this.competitionService) {
+      console.log(competitionService.getCompetition());
+      // this.competitions = this.competitionService.getCompetition();
+    }
+    else {
+      console.log('competition service is not implementation');
+    }
   }
 
   sayHi() {
