@@ -27,7 +27,11 @@ import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
 export class CompetitionComponent implements OnInit {
 
   data: string;
-  competitions: Competition;
+  competitions: Competition[] = [
+    {headline: "Lee", description: "LEE"},
+    {headline: "Lee2", description: "LEE2"},
+    {headline: "Lee3", description: "LEE3"},
+  ]
 
   constructor(@Inject(DB_CONFIG) public dbConfig: DBConfig, @Optional() private competitionService: CompetitionService) {
     // @Inject('myConfig') public myConfig: string
@@ -36,7 +40,7 @@ export class CompetitionComponent implements OnInit {
       console.log(competitionService.getCompetition());
       // <p> Mercari Price Suggestion Challenge <br> Can you automatically suggest product prices to online sellers? <br> featured   1 month ago tags </p></td>
       // <td> <p> $10,0000 <br> 2,1023 teams </p>
-      this.competitions = this.competitionService.getCompetition();
+      // this.competitions = this.competitionService.getCompetition();
     }
     else {
       console.log('competition service is not implementation');
