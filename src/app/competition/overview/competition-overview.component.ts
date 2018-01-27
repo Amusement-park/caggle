@@ -1,11 +1,11 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
-import { CompetitionServiceProvider } from './competition.service.provider'
-import { CompetitionService } from './competition.service'
-import { Competition } from './competition'
-import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
+import { CompetitionServiceProvider } from '../competition.service.provider'
+import { CompetitionService } from '../competition.service'
+import { Competition } from '../competition'
+import { DBConfig, DB_CONFIG, DBConfigProvider } from '../competition.config'
 
 @Component({
-  selector: 'app-competition',
+  selector: 'app-competition-overview',
   // template: '{{ dbConfig | json }}',
   /*
   template: `
@@ -14,8 +14,8 @@ import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
   `,
   */
   // template: '{{ competitionService.getCompetition() | json }}',
-  templateUrl: './competition.component.html',
-  styleUrls: ['./competition.component.scss'],
+  templateUrl: './competition-overview.component.html',
+  styleUrls: ['./competition-overview.component.scss'],
   providers: [
       // { provide: CompetitionService, useClass: CompetitionService }
      // ,{ provide: DBConfig, useValue: COMP_DB_CONFIG }
@@ -24,7 +24,7 @@ import { DBConfig, DB_CONFIG, DBConfigProvider } from './competition.config'
      ,DBConfigProvider
   ]
 })
-export class CompetitionComponent implements OnInit {
+export class CompetitionOverviewComponent implements OnInit {
 
   data: string;
   competitions: Competition[] = [
