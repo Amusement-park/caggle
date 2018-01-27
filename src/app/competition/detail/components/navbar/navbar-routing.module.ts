@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CompetitionOverviewComponent } from './competition-overview.component';
+import { NavbarComponent } from './navbar.component';
 
 const routes: Routes = [
     {
-        path: '', component: CompetitionOverviewComponent
+        path: '', component: NavbarComponent
     }
 ];
 
@@ -12,5 +12,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class CompetitionOverviewRoutingModule {
+export class NavbarRoutingModule {
 }
