@@ -9,6 +9,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard' },
             { path: 'competition', loadChildren: '../competition/detail/competition-detail.module#CompetitionDetailModule' },
+            // { path: 'competition', loadChildren: '../competition/detail/components/blank-page/blank-page.module#BlankPageModule' },
             // { path: 'competition', loadChildren: '../competition/list/competition-list.module#CompetitionListModule' },
             { path: 'discussion', loadChildren: '../discussion/discussion.module#DiscussionModule' },
             { path: 'ranking', loadChildren: '../ranking/ranking.module#RankingModule' },
@@ -20,7 +21,6 @@ const routes: Routes = [
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
-            { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' }
         ]
     }
 ];

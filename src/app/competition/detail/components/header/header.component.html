@@ -1,0 +1,14 @@
+<!-- <nav [ngClass] = "'child-menu'"> -->
+<nav class="navbar-expand-lg">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item d-none d-xl-block">
+            <a [routerLink]="['blank-page']" routerLinkActive="active"> {{ 'Blank Page' | translate }} </a>
+        </li>
+        <li class="nav-item d-none d-xl-block">
+            <a [routerLink]="['overview']" routerLinkActive="active"> | {{ 'Overview' | translate }} </a>
+        </li>
+        <li class="nav-item d-none d-xl-block">
+            <a [routerLink]="['data']" routerLinkActive="active"> | {{ 'Data' | translate }} </a>
+        </li>
+    </ul>  
+</nav>  
