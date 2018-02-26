@@ -8,8 +8,7 @@ import { CompetitionDetailRoutingModule } from './competition-detail-routing.mod
 import { CompetitionDetailComponent } from './competition-detail.component';
 
 import {
-    NavbarComponent,
-    // TimepickerComponent
+    OverviewComponent
 } from './components';
 
 
@@ -26,7 +25,7 @@ import {
   ],
   declarations: [
     CompetitionDetailComponent
-    ,NavbarComponent]
-
+    ,OverviewComponent
+  ]
 })
 export class CompetitionDetailModule { }

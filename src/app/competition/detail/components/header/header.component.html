@@ -1,14 +1,29 @@
 <!-- <nav [ngClass] = "'child-menu'"> -->
-<nav class="navbar-expand-lg">
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item d-none d-xl-block">
-            <a [routerLink]="['blank-page']" routerLinkActive="active"> {{ 'Blank Page' | translate }} </a>
-        </li>
-        <li class="nav-item d-none d-xl-block">
-            <a [routerLink]="['overview']" routerLinkActive="active"> | {{ 'Overview' | translate }} </a>
-        </li>
-        <li class="nav-item d-none d-xl-block">
-            <a [routerLink]="['data']" routerLinkActive="active"> | {{ 'Data' | translate }} </a>
-        </li>
-    </ul>  
-</nav>  
+
+<div class="page-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="#">Competition</a>
+        <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" [routerLink]="['blank-page']" routerLinkActive="active"> {{ 'Blank Page' | translate }} <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['overview']" routerLinkActive="active"> {{ 'Overview' | translate }} </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['data']" routerLinkActive="active"> {{ 'Data' | translate }} </a>
+                </li>
+            </ul>
+            <!--
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            -->
+        </div>
+    </nav>
+</div>

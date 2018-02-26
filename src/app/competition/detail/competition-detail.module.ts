@@ -12,7 +12,6 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { BlankPageComponent } from './components/blank-page/blank-page.component';
 import { DataComponent} from './components/data/data.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
