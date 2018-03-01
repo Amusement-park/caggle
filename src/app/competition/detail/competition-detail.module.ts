@@ -17,6 +17,7 @@ import { DataComponent} from './components/data/data.component';
     CommonModule,
     CompetitionDetailRoutingModule,
     TranslateModule,
+    NgbModule,
     NgbDropdownModule.forRoot()
   ],
   declarations: [
