@@ -54,6 +54,22 @@ $topnav-background-color: #222;
         outline: none;
     }
 
+    .btn-github{
+        color: rgba(255, 255, 255, 0.8);
+        background: $topnav-background-color;
+        font-size: 50px;
+        line-height: 40px;
+        padding: 0 25px;
+    }
+
+    .btn-github:hover,
+    .btn-github:focus,
+    .btn-github:active,
+    .btn-github:visited {
+        color: rgba(255, 255, 255, 1);
+        outline: none;
+    }
+
     h1 {
         font-weight: 300;
         margin-top: 20px;
