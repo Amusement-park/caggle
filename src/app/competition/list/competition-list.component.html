@@ -1,6 +1,21 @@
 <div>
     <div class="col-sm-8" style="margin:0 auto;">
         <div class="card mb-3">
+            <button (click)="clear(); showConfig()">showConfig</button>
+            <button (click)="clear(); showConfigResponse()">getResponse</button>
+
+            <span *ngIf="config">
+                <!--<p>Heroes API URL is "{{config.heroesUrl}}"</p>-->
+                <!--<p>Textfile URL is "{{config.textfile}}"</p>-->
+                <p>Textfile URL is "{{ config.competId }}"</p>
+                <div *ngIf="headers">
+                Response headers:
+                <ul>
+                    <li *ngFor="let header of headers">{{header}}</li>
+                </ul>
+                </div>
+            </span>
+
             <div class="card-header">N Active Competitions </div>
             <table class="card-body table table-hover">
                 <thead>
@@ -24,3 +39,4 @@
         </div>
     </div>
 </div>
+<p *ngIf="error" class="error">{{error | json}}</p>

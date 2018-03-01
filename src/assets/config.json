@@ -1,0 +1,5 @@
+{
+  "heroesUrl": "api/heroes",
+  "textfile": "assets/textfile.txt",
+  "competitionList" : "http://210.89.178.101:9000/competition"
+}
