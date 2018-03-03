@@ -19,14 +19,20 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        // github callback check
+
+        // is token exist, then goTo dashboard
+        if(localStorage.getItem('token')) {
+            this.router.navigate(['/dashboard'], { relativeTo: this.route });
+        }
+
+        // if code queryString is setted, check github login
         this.route.queryParams
             .filter(params => params.code)
             .subscribe(params => {
                 this.loginService.loginUsingGithub(params.code)
                     .subscribe(data => {
                             // this.goToDashboard()
-                            localStorage.setItem('isLoggedin', 'true');
+                            // localStorage.setItem('isLoggedin', 'true');
                             localStorage.setItem('token', JSON.stringify(data));
                             this.router.navigate(['/competition'], { relativeTo: this.route });
                             // console.log(data)
@@ -36,7 +42,7 @@ export class LoginComponent implements OnInit {
     }
 
     onLoggedin() {
-        localStorage.setItem('isLoggedin', 'true');
+        localStorage.setItem('token', JSON.stringify('{}'));
     }
 
     loginUsingGithub() {
