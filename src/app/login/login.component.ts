@@ -13,7 +13,7 @@ import 'rxjs/add/operator/filter';
     animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
-    constructor(public router: Router,
+    constructor(private router: Router,
         private route: ActivatedRoute,
         @Optional() private loginService: LoginService) {
     }
@@ -24,8 +24,13 @@ export class LoginComponent implements OnInit {
             .filter(params => params.code)
             .subscribe(params => {
                 this.loginService.loginUsingGithub(params.code)
-                    .subscribe(data =>
-                        console.log(data)
+                    .subscribe(data => {
+                            // this.goToDashboard()
+                            localStorage.setItem('isLoggedin', 'true');
+                            localStorage.setItem('token', JSON.stringify(data));
+                            this.router.navigate(['/competition'], { relativeTo: this.route });
+                            // console.log(data)
+                        }
                     )
             });
     }
@@ -35,7 +40,8 @@ export class LoginComponent implements OnInit {
     }
 
     loginUsingGithub() {
-        this.loginService.goToOauthPage()
-        return false
+        // this.router.navigate(['/competition'], { relativeTo: this.route });
+        this.loginService.goToOauthPage();
+        return false;
     }
 }

@@ -28,7 +28,9 @@ export class HeaderComponent implements OnInit {
         });
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        const token = JSON.parse(localStorage.getItem('token'))
+    }
 
     isToggled(): boolean {
         const dom: Element = document.querySelector('body');
