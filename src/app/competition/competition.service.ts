@@ -19,6 +19,7 @@ export class CompetitionService {
   configUrl = 'http://210.89.178.101:9000/competition'
   // configUrl = 'https://api.github.com/users/seeschweiler'
   constructor(private http: HttpClient) { }
+
   loadData() { return  'Hi';}
 
   getCompetition(): Competition { return new Competition('real value', '123'); }
@@ -26,10 +27,10 @@ export class CompetitionService {
   getConfig() {
       return this.http.get<Config>(this.configUrl, {
         headers:new HttpHeaders().
-          // set('Content-Type', 'application/json; application/x-www-form-urlencoded; charset=UTF-8').
-          set('Accept', 'application/json')
-          // set('Access-Control-Allow-Headers', 'Content-Type').
-          // set('Access-Control-Allow-Origin', '*')
+          set('Content-Type', 'application/json; application/x-www-form-urlencoded; charset=UTF-8').
+          set('Accept', 'application/json').
+          set('Access-Control-Allow-Headers', 'Content-Type').
+          set('Access-Control-Allow-Origin', '*')
       })
       .pipe(retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
@@ -38,7 +39,7 @@ export class CompetitionService {
   getConfigResponse(): Observable<HttpResponse<Config>> {
     return this.http.get<Config>(
       this.configUrl, { headers:new HttpHeaders().
-          // set('Content-Type', 'application/json').
+          set('Content-Type', 'application/json').
           set('Accept', 'application/json')
           // set('Access-Control-Allow-Headers', 'Content-Type').
           // set('Access-Control-Allow-Origin', '*'),

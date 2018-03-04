@@ -1,15 +1,7 @@
 <div class="col-sm-8" style="margin:0 auto;">
     <div class="card mb-3">
-        <div class="card-header">Discussion</div>
-        <div class="card-body">
-            <h4 class="card-title">Dark card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-
-    <div class="card mb-3">
         <div class="card-header">
-            <h1> 0 topics and kernels </h1>
+            <h3> 0 topics and kernels </h3>
         </div>
         <div class="card-body">
             <!--<h4 class="card-title">Dark card title</h4>-->
@@ -37,8 +29,37 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
-        </nav>
+            </nav>
 
+            <table class="card-body table table-hover">
+                <thead>
+                <!--
+                <tr>
+                    <th>#</th>
+                    <th>headline</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+                -->
+                </thead>
+                <tbody>
+                    <tr *ngFor="let comp of competitions; let i=index;">
+                        <th scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></th>
+                        <td colspan="2"> {{ comp | json }} </td>
+                        <td> {{ comp.headline }}, {{ comp.description }} </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p *ngIf="error" class="error">{{error | json}}</p>
+        </div> <!--tbody -->
+    </div>
+
+
+    <div class="card mb-3">
+        <div class="card-header">Discussion</div>
+        <div class="card-body">
+            <h4 class="card-title">Dark card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
     </div>
 </div>
