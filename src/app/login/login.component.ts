@@ -13,29 +13,41 @@ import 'rxjs/add/operator/filter';
     animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
-    constructor(public router: Router,
+    constructor(private router: Router,
         private route: ActivatedRoute,
         @Optional() private loginService: LoginService) {
     }
 
     ngOnInit() {
-        // github callback check
+
+        // is token exist, then goTo dashboard
+        if(localStorage.getItem('token')) {
+            this.router.navigate(['/dashboard'], { relativeTo: this.route });
+        }
+
+        // if code queryString is setted, check github login
         this.route.queryParams
             .filter(params => params.code)
             .subscribe(params => {
                 this.loginService.loginUsingGithub(params.code)
-                    .subscribe(data =>
-                        console.log(data)
+                    .subscribe(data => {
+                            // this.goToDashboard()
+                            // localStorage.setItem('isLoggedin', 'true');
+                            localStorage.setItem('token', JSON.stringify(data));
+                            this.router.navigate(['/competition'], { relativeTo: this.route });
+                            // console.log(data)
+                        }
                     )
             });
     }
 
     onLoggedin() {
-        localStorage.setItem('isLoggedin', 'true');
+        localStorage.setItem('token', JSON.stringify('{}'));
     }
 
     loginUsingGithub() {
-        this.loginService.goToOauthPage()
-        return false
+        // this.router.navigate(['/competition'], { relativeTo: this.route });
+        this.loginService.goToOauthPage();
+        return false;
     }
 }

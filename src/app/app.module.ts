@@ -11,6 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 
+// Interceptor
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+
+import { AccountModule } from './account/account.module';
+
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     // for development
@@ -32,10 +38,15 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        AppRoutingModule
+        AppRoutingModule,
+        AccountModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard],
+    providers: [AuthGuard, {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptor,
+        multi: true
+    }],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
