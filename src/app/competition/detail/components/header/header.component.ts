@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
+    public background: any;
 
     constructor(private translate: TranslateService, public router: Router) {
 
@@ -26,6 +27,13 @@ export class HeaderComponent implements OnInit {
                 this.toggleSidebar();
             }
         });
+
+        this.background = {
+             imagePath: 'assets/images/slider2.jpg',
+              label: 'headline',
+              text: 'description',
+             
+        };
     }
 
     ngOnInit() {}

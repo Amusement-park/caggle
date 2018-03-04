@@ -9,8 +9,10 @@ import { CompetitionDetailComponent } from './competition-detail.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { OverviewComponent } from './components/overview/overview.component';
-import { BlankPageComponent } from './components/blank-page/blank-page.component';
+import { DiscussionComponent } from './components/discussion/discussion.component';
 import { DataComponent} from './components/data/data.component';
+
+
 
 @NgModule({
   imports: [
@@ -23,7 +25,7 @@ import { DataComponent} from './components/data/data.component';
   declarations: [
     CompetitionDetailComponent, 
     HeaderComponent,
-    BlankPageComponent,
+    DiscussionComponent,
     OverviewComponent,
     DataComponent
     ]
