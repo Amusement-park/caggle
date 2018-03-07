@@ -1,13 +1,14 @@
 <div>
     <div class="col-sm-8" style="margin:0 auto;">
         <div class="card mb-3">
-            <button (click)="clear(); showConfig()">showConfig</button>
+            <div> {{ data | json }} </div>
+            <button (click)="lear(); sayHi()">showConfig</button>
             <button (click)="clear(); showConfigResponse()">getResponse</button>
 
             <span *ngIf="config">
                 <!--<p>Heroes API URL is "{{config.heroesUrl}}"</p>-->
                 <!--<p>Textfile URL is "{{config.textfile}}"</p>-->
-                <p>Textfile URL is "{{ config.competId }}"</p>
+                <p>Textfile URL is "{{config}}"</p>
                 <div *ngIf="headers">
                 Response headers:
                 <ul>
@@ -29,7 +30,7 @@
                 -->
                 </thead>
                 <tbody>
-                    <tr *ngFor="let comp of competitions; let i=index;">
+                    <tr *ngFor="let comp of data; let i=index;">
                         <th scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></th>
                         <td colspan="2"> {{ comp | json }} </td>
                         <td> {{ comp.headline }}, {{ comp.description }} </td>

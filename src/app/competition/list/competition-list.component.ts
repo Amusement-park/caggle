@@ -3,6 +3,7 @@ import { CompetitionServiceProvider } from '../competition.service.provider'
 import { CompetitionService, Config } from '../competition.service'
 import { Competition } from '../competition'
 import { DBConfig, DB_CONFIG, DBConfigProvider } from '../competition.config'
+import { HttpClient } from '@angular/common/http';
 // import { MessageService } from '../message.service';
 
 
@@ -15,7 +16,7 @@ import { DBConfig, DB_CONFIG, DBConfigProvider } from '../competition.config'
     <p>{{ data }}</p>
   `,
   */
-  // template: '{{ competitionService.showConfigResponse() | json }}',
+  template: '{{ competitionService.showConfigResponse() | json }}',
   templateUrl: './competition-list.component.html',
   styleUrls: ['./competition-list.component.scss'],
   providers: [
@@ -33,8 +34,8 @@ export class CompetitionListComponent implements OnInit {
   error: any;
   headers: string[];
   config: Config;
-  data: string;
-
+  data: Object;
+  
   // dummy data
   competitions: Competition[] = [
     {headline: "Lee", description: "LEE"},
@@ -48,7 +49,7 @@ export class CompetitionListComponent implements OnInit {
     this.headers = undefined;
   }
 
-  constructor(@Inject(DB_CONFIG) public dbConfig: DBConfig, @Optional() private competitionService: CompetitionService) {
+  constructor(@Inject(DB_CONFIG) public dbConfig: DBConfig, @Optional() private competitionService: CompetitionService, private http: HttpClient) {
     // @Inject('myConfig') public myConfig: string
     // console.log(dbConfig);
     if (this.competitionService) {
@@ -62,6 +63,7 @@ export class CompetitionListComponent implements OnInit {
     }
   }
 
+ /*
   showConfig() {
     this.competitionService.getConfig()
       .subscribe(
@@ -88,13 +90,22 @@ export class CompetitionListComponent implements OnInit {
   makeError() {
     this.competitionService.makeIntentionalError().subscribe(null, error => this.error = error );
   }
-
-  sayHi() {
-    this.data = this.competitionService.loadData();
+  */
+  loadData() {
+    this.competitionService.loadData().subscribe(resp => {
+      console.log(resp)
+      this.data = resp;
+    });
+    // this.data = this.competitionService.loadData();
   }
 
   ngOnInit() {
-    
+    this.loadData();
+    /*
+    this.http.get('http://210.89.178.101:9000/competition').subscribe(result => {
+      console.log(result);
+    });
+    */
   }
 }
 /*

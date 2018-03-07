@@ -20,14 +20,22 @@ export class CompetitionService {
   // configUrl = 'https://api.github.com/users/seeschweiler'
   constructor(private http: HttpClient) { }
 
-  loadData() { return  'Hi';}
+  loadData() { 
+    console.log('loadData');
+    return this.http.get(this.configUrl)
+    /*
+    this.http.get('http://210.89.178.101:9000/competition').subscribe(result => {
+      console.log(result);
+    });
+    return 'hi';
+    */
+  }
 
   getCompetition(): Competition { return new Competition('real value', '123'); }
-  
+  /* 
   getConfig() {
       return this.http.get<Config>(this.configUrl, {
         headers:new HttpHeaders().
-          set('Content-Type', 'application/json; application/x-www-form-urlencoded; charset=UTF-8').
           set('Accept', 'application/json').
           set('Access-Control-Allow-Headers', 'Content-Type').
           set('Access-Control-Allow-Origin', '*')
@@ -39,12 +47,13 @@ export class CompetitionService {
   getConfigResponse(): Observable<HttpResponse<Config>> {
     return this.http.get<Config>(
       this.configUrl, { headers:new HttpHeaders().
-          set('Content-Type', 'application/json').
+          // set('Content-Type', 'application/json').
           set('Accept', 'application/json')
           // set('Access-Control-Allow-Headers', 'Content-Type').
           // set('Access-Control-Allow-Origin', '*'),
           ,observe: 'response' });
   }
+  */
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
