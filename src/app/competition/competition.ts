@@ -1,4 +1,4 @@
 
 export class Competition{
-  constructor(public headline: string, public description: string) {}
+  constructor(public id: number, public headline: string, public description: string) {}
 }

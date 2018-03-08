@@ -30,10 +30,13 @@
                 -->
                 </thead>
                 <tbody>
-                    <tr *ngFor="let comp of data; let i=index;">
-                        <th scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></th>
-                        <td colspan="2"> {{ comp | json }} </td>
-                        <td> {{ comp.headline }}, {{ comp.description }} </td>
+                    <tr *ngFor="let comp of comps$ | async"
+                     [class.selected]="comp.id === selectedId"> 
+                        <a [routerLink]="['/competition/detail', comp.id]">
+                            <th scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></th>
+                            <td colspan="2"> {{ comp | json }} </td>
+                            <td> {{ comp.headline }}, {{ comp.description }} </td>
+                        </a>
                     </tr>
                 </tbody>
             </table>

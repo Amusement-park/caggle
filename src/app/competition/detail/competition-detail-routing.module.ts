@@ -11,13 +11,16 @@ export const routes : Routes = [
         path: '', 
         component: CompetitionDetailComponent,
         children:[
+
             // { path: '', redirectTo: '/blank-page' },
             // { path: 'blank-page', component: '/components/blank-page/blank-page.module#BlankPageModule'}
             { path: 'discussion', component: DiscussionComponent },
             { path: 'overview', component: OverviewComponent },
             { path: 'data', component: DataComponent }
         ]
-    }
+    },
+    { path: 'comp_detail/:id', redirectTo: '/detail/:id' },
+    { path: 'detail/:id', component: CompetitionDetailComponent }
 ];
 
 @NgModule({

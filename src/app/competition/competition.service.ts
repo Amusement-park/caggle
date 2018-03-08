@@ -1,3 +1,5 @@
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Competition } from './competition';
 import { HttpClient } from '@angular/common/http';
@@ -13,6 +15,13 @@ export interface Config {
   competitionList: string;
 }
 
+// dummy data
+const COMPS = [
+  new Competition(1, "1" , "LEE"),
+  new Competition(2, "1" , "LEE"),
+  new Competition(3, "1" , "LEE")
+];
+
 @Injectable()
 export class CompetitionService {
   // configUrl = 'assets/config.json'
@@ -21,7 +30,6 @@ export class CompetitionService {
   constructor(private http: HttpClient) { }
 
   loadData() { 
-    console.log('loadData');
     return this.http.get(this.configUrl)
     /*
     this.http.get('http://210.89.178.101:9000/competition').subscribe(result => {
@@ -30,8 +38,11 @@ export class CompetitionService {
     return 'hi';
     */
   }
+  getComps() { return Observable.of(COMPS); }
+  getComp(id: number | string) {
+    return this.getComps().map(comps => comps.find(comp => comp.id === +id))
+  }
 
-  getCompetition(): Competition { return new Competition('real value', '123'); }
   /* 
   getConfig() {
       return this.http.get<Config>(this.configUrl, {

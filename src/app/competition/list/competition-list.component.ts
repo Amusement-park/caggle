@@ -1,8 +1,10 @@
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { CompetitionServiceProvider } from '../competition.service.provider'
 import { CompetitionService, Config } from '../competition.service'
 import { Competition } from '../competition'
-import { DBConfig, DB_CONFIG, DBConfigProvider } from '../competition.config'
 import { HttpClient } from '@angular/common/http';
 // import { MessageService } from '../message.service';
 
@@ -23,9 +25,7 @@ import { HttpClient } from '@angular/common/http';
       // { provide: CompetitionService, useClass: CompetitionService }
      // ,{ provide: DBConfig, useValue: COMP_DB_CONFIG }
      ,{ provide: 'isDev', useValue: true },
-     ,CompetitionServiceProvider
      ,CompetitionService
-     ,DBConfigProvider
   ],
   styles: ['.error {color: red;}']
 })
@@ -35,25 +35,21 @@ export class CompetitionListComponent implements OnInit {
   headers: string[];
   config: Config;
   data: Object;
-  
-  // dummy data
-  competitions: Competition[] = [
-    {headline: "Lee", description: "LEE"},
-    {headline: "Lee2", description: "LEE2"},
-    {headline: "Lee3", description: "LEE3"},
-  ]
+  comps$: Observable<Competition[]>;
+  private selectedId: number;
 
   clear() {
-    this.config = undefined;
     this.error = undefined;
     this.headers = undefined;
   }
 
-  constructor(@Inject(DB_CONFIG) public dbConfig: DBConfig, @Optional() private competitionService: CompetitionService, private http: HttpClient) {
+  constructor(private competitionService: CompetitionService, 
+              private http: HttpClient, 
+              private route: ActivatedRoute ) {
     // @Inject('myConfig') public myConfig: string
     // console.log(dbConfig);
     if (this.competitionService) {
-      console.log(competitionService.getCompetition());
+      // console.log(competitionService.getCompetition());
       // <p> Mercari Price Suggestion Challenge <br> Can you automatically suggest product prices to online sellers? <br> featured   1 month ago tags </p></td>
       // <td> <p> $10,0000 <br> 2,1023 teams </p>
       // this.competitions = this.competitionService.getCompetition();
@@ -63,6 +59,19 @@ export class CompetitionListComponent implements OnInit {
     }
   }
 
+  ngOnInit() {
+    this.comps$ = this.route.paramMap.switchMap ((params: ParamMap) => {
+        this.selectedId = +params.get('id');
+        return this.competitionService.getComps();
+    });
+    
+    // this.loadData();
+    /*
+    this.http.get('http://210.89.178.101:9000/competition').subscribe(result => {
+      console.log(result);
+    });
+    */
+  }
  /*
   showConfig() {
     this.competitionService.getConfig()
@@ -99,14 +108,7 @@ export class CompetitionListComponent implements OnInit {
     // this.data = this.competitionService.loadData();
   }
 
-  ngOnInit() {
-    this.loadData();
-    /*
-    this.http.get('http://210.89.178.101:9000/competition').subscribe(result => {
-      console.log(result);
-    });
-    */
-  }
+
 }
 /*
 
