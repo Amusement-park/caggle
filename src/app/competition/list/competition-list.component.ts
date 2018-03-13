@@ -2,8 +2,8 @@ import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit, Inject, Optional } from '@angular/core';
-import { CompetitionServiceProvider } from '../competition.service.provider'
-import { CompetitionService, Config } from '../competition.service'
+import { CompetitionServiceProvider } from '../service/competition.service.provider'
+import { CompetitionService, Config } from '../service/competition.service'
 import { Competition } from '../competition'
 import { HttpClient } from '@angular/common/http';
 // import { MessageService } from '../message.service';
@@ -62,7 +62,7 @@ export class CompetitionListComponent implements OnInit {
   ngOnInit() {
     this.comps$ = this.route.paramMap.switchMap ((params: ParamMap) => {
         this.selectedId = +params.get('id');
-        return this.competitionService.getComps();
+        return this.competitionService.getComps()
     });
     
     // this.loadData();

@@ -4,11 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { slideInDownAnimation } from './animations';
-import { CompetitionService } from '../competition.service';
+import { CompetitionService } from '../service/competition.service';
 import { Competition } from '../competition';
 
 @Component({
-  template: `
+  template: `<h2> detail {{ comp }} </h2> 
+    <div *ngIf="comp$ | async as comp">
+    <h3>"{{ comp.id}}"</h3>
+    <div>
+  `
+  /*
   <h2>HEROES</h2>
   <div *ngIf="hero$ | async as hero">
     <h3>"{{ hero.name }}"</h3>
@@ -22,8 +27,9 @@ import { Competition } from '../competition';
       <button (click)="gotoHeroes(hero)">Back</button>
     </p>
   </div>
-  `,
-  animations: [ slideInDownAnimation ]
+  `
+  */
+  // ,animations: [ slideInDownAnimation ]
 })
 /*
 @Component({
@@ -34,9 +40,9 @@ import { Competition } from '../competition';
 */
 
 export class CompetitionDetailComponent implements OnInit {
-  @HostBinding('@routeAnimation') routeAnimation = true;
-  @HostBinding('style.display')   display = 'block';
-  @HostBinding('style.position')  position = 'absolute';
+  // @HostBinding('@routeAnimation') routeAnimation = true;
+  // @HostBinding('style.display')   display = 'block';
+  // @HostBinding('style.position')  position = 'absolute';
 
   comp$: Observable<Competition>;
 

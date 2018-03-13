@@ -5,7 +5,7 @@ import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { CompetitionListRoutingModule } from './competition-list-routing.module';
 import { CompetitionListComponent } from './competition-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CompetitionService } from '../competition.service';
+import { CompetitionService } from '../service/competition.service';
 
 @NgModule({
   imports: [

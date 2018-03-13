@@ -8,9 +8,9 @@ import { CompetitionDetailRoutingModule } from './competition-detail-routing.mod
 import { CompetitionDetailComponent } from './competition-detail.component';
 import { HeaderComponent } from './components/header/header.component';
 
-import { OverviewComponent } from './components/overview/overview.component';
-import { DiscussionComponent } from './components/discussion/discussion.component';
-import { DataComponent} from './components/data/data.component';
+// import { OverviewComponent } from './components/overview/overview.component';
+// import { DiscussionComponent } from './components/discussion/discussion.component';
+// import { DataComponent} from './components/data/data.component';
 
 
 
@@ -25,9 +25,9 @@ import { DataComponent} from './components/data/data.component';
   declarations: [
     CompetitionDetailComponent, 
     HeaderComponent,
-    DiscussionComponent,
-    OverviewComponent,
-    DataComponent
+    // DiscussionComponent,
+    // OverviewComponent,
+    // DataComponent
     ]
 
 })
