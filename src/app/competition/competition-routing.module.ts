@@ -11,7 +11,7 @@ const routes: Routes = [
             // { path: 'list', component: CompetitionListComponent }
         // ]
     },
-    { path: 'detail/:id', component: CompetitionDetailComponent },
+    { path: 'detail/:competId', component: CompetitionDetailComponent },
     { path: 'list', component: CompetitionListComponent 
        ,children: 
         [

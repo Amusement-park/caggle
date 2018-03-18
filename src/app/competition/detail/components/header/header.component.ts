@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'comp-header',
     // templateUrl: './header.component.html',
-    template: '  <h3>"{{ comp.competId }}"</h3> ',
+    template: '  <h3>" {{ competId }}"</h3> ',
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
     public background: any;
+    @Input() competId: number;
 
     constructor(private translate: TranslateService, public router: Router) {
 
