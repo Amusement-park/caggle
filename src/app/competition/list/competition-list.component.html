@@ -30,6 +30,16 @@
                 -->
                 </thead>
                 <tbody>
+                    <tr *ngFor="let comp of comps.__zone_symbol__value"
+                     [class.selected]="comp.competId === selectedId"> 
+                        <a [routerLink]="['/competition/detail', comp.competId]" routerLinkActivate="activate">
+                            <th scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></th>
+                            <td colspan="2"> [{{ comp.competId }}] {{ comp.headline }} , {{ comp.description }} </td>
+                            <!--<td> {{ comp.reward }}, {{ comp.regiDate }} </td>-->
+                            <td> {{ comp.headline}}, {{ comp.headline}} </td>
+                        </a>
+                    </tr>
+                    <!-- 
                     <tr *ngFor="let comp of comps$ | async"
                      [class.selected]="comp.id === selectedId"> 
                         <a [routerLink]="['/competition/detail', comp.id]" routerLinkActivate="activate">
@@ -38,6 +48,7 @@
                             <td> {{ comp.headline }}, {{ comp.description }} </td>
                         </a>
                     </tr>
+                    -->
                 </tbody>
             </table>
         </div>

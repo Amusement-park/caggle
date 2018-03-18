@@ -7,27 +7,23 @@ import { CompetitionComponent } from './competition.component'
 const routes: Routes = [
     {
         path: '', component: CompetitionComponent
-    }
-    ,
-    { 
-       path: 'list', component: CompetitionListComponent
+        // ,children: [
+            // { path: 'list', component: CompetitionListComponent }
+        // ]
+    },
+    { path: 'detail/:id', component: CompetitionDetailComponent },
+    { path: 'list', component: CompetitionListComponent 
        ,children: 
         [
             {
-                path: '/competition/detail/:id',
-                component: CompetitionDetailComponent
-            }
-            /*
-            ,{
                 path: 'edit/:detail-id',
                 component: CompetitionDetailComponent
             }
-            */
         ]
     },
+    /*
     {
         path: 'detail/:id', component: CompetitionDetailComponent
-        /*
         ,children:
         [
             {
@@ -35,8 +31,8 @@ const routes: Routes = [
                 component: CompetitionDetailComponent
             }
         ]
-        */
     }
+    */
 ];
 
 @NgModule({

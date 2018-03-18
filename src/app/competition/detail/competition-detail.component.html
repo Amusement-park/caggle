@@ -1,9 +1,13 @@
-<app-header></app-header>
 <!--
 <div [ngClass] = "'child-container'">	
     <router-outlet></router-outlet>	
 </div>
 -->
+<h2> detail {{ comp }} </h2> 
+    <div *ngIf="comp$ | async as comp">
+    <h3>"{{ comp.competId }}"</h3>
+    <comp-header></comp-header>
+<div>
 <section class="competition-detail-main-container">
     <router-outlet></router-outlet>
 </section>

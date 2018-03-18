@@ -21,6 +21,7 @@ const COMPS = [
   new Competition(2, "1" , "LEE"),
   new Competition(3, "1" , "LEE")
 ];
+let competitionsPromise = Promise.resolve(COMPS);
 
 @Injectable()
 export class CompetitionService {
@@ -30,17 +31,32 @@ export class CompetitionService {
   constructor(private http: HttpClient) { }
 
   loadData() { 
-    return this.http.get(this.configUrl)
+    // return this.http.get(this.configUrl);
     /*
     this.http.get('http://210.89.178.101:9000/competition').subscribe(result => {
       console.log(result);
     });
-    return 'hi';
     */
+    // return 'hi';
   }
-  getComps() { return Observable.of(COMPS); }
-  getComp(id: number | string) {
-    return this.getComps().map(comps => comps.find(comp => comp.id === +id))
+  getComps() : Promise<Competition[]> { 
+    /*
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.configUrl).toPromise().then(
+        res => {
+          console.log(res);
+          resolve();
+        }
+      );
+    });
+    */
+    return competitionsPromise;
+    // return Observable.of(this.http.get(this.configUrl));
+    // return Observable.of(COMPS);
+   }
+  getComp(id: number | string) : Promise<Competition> {
+    return this.getComps()
+        .then(comps => comps.find(comp => comp.competId === +id))
   }
 
   /* 

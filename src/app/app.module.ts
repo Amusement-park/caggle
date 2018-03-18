@@ -14,8 +14,10 @@ import { AuthGuard } from './shared';
 // Interceptor
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
-
 import { AccountModule } from './account/account.module';
+
+import { CompetitionModule } from './competition/competition.module';
+import { CompetitionDetailModule } from './competition/detail/competition-detail.module';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -39,9 +41,12 @@ export function createTranslateLoader(http: HttpClient) {
             }
         }),
         AppRoutingModule,
-        AccountModule
+        AccountModule,
+        CompetitionModule,
     ],
-    declarations: [AppComponent],
+    declarations: [
+        AppComponent
+        ],
     providers: [AuthGuard, {
         provide: HTTP_INTERCEPTORS,
         useClass: AuthInterceptor,

@@ -1,30 +1,27 @@
-import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CommonModule } from '@angular/common';
-import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import { CompetitionComponent } from './competition.component';
-import { CompetitionRoutingModule } from './competition-routing.module';
-import { CompetitionListComponent } from './list/competition-list.component';
-import { CompetitionDetailComponent } from './detail/competition-detail.component';
-import { CompetitionDetailRoutingModule } from './detail/competition-detail-routing.module';
+import { NgModule }   from '@angular/core';
+import { CommonModule }   from '@angular/common';
+import { ReactiveFormsModule }    from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
+import { CompetitionComponent } from './competition.component';
+import { CompetitionListComponent }  from './list/competition-list.component';
+import { CompetitionDetailComponent }  from './detail/competition-detail.component';
 import { CompetitionService } from './service/competition.service';
+import { CompetitionRoutingModule }  from './competition-routing.module';
+
+import { CompetitionDetailModule } from './detail/competition-detail.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NgbCarouselModule.forRoot(),
-    NgbAlertModule.forRoot(),
-    HttpClientModule,
-    CompetitionRoutingModule,
-    CompetitionDetailRoutingModule
+  imports: [     
+        CommonModule,
+		ReactiveFormsModule,
+        CompetitionDetailModule,
+        CompetitionRoutingModule,
+  ], 
+  declarations: [
+        CompetitionComponent,
+		CompetitionListComponent,
+		CompetitionDetailComponent,
   ],
-
-  declarations: [CompetitionComponent
-      ,CompetitionListComponent
-      ,CompetitionDetailComponent],
-
-  providers: [CompetitionService]
+  providers: [ CompetitionService ]
 })
 export class CompetitionModule { }

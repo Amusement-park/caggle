@@ -3,8 +3,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
+    selector: 'comp-header',
+    // templateUrl: './header.component.html',
+    template: '  <h3>"{{ comp.competId }}"</h3> ',
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
@@ -27,7 +28,6 @@ export class HeaderComponent implements OnInit {
                 this.toggleSidebar();
             }
         });
-
         this.background = {
              imagePath: 'assets/images/slider2.jpg',
               label: 'headline',

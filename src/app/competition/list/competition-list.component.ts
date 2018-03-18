@@ -11,16 +11,9 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-competition-list',
-  // template: '{{ dbConfig | json }}',
-  /*
-  template: `
-    <button (click)="sayHi()">Say Hi</button>
-    <p>{{ data }}</p>
-  `,
-  */
-  template: '{{ competitionService.showConfigResponse() | json }}',
+  // template: '{{ comps.__zone_symbol__value | json }}',
   templateUrl: './competition-list.component.html',
-  styleUrls: ['./competition-list.component.scss'],
+  // styleUrls: ['./competition-list.component.scss'],
   providers: [
       // { provide: CompetitionService, useClass: CompetitionService }
      // ,{ provide: DBConfig, useValue: COMP_DB_CONFIG }
@@ -59,19 +52,36 @@ export class CompetitionListComponent implements OnInit {
     }
   }
 
+  comps: Promise<Competition[]>;
   ngOnInit() {
+    this.comps = this.competitionService.getComps();
+    // this.loadData();
+    // console.log(this.data);
+    /*
     this.comps$ = this.route.paramMap.switchMap ((params: ParamMap) => {
         this.selectedId = +params.get('id');
         return this.competitionService.getComps()
     });
+    */
     
-    // this.loadData();
     /*
     this.http.get('http://210.89.178.101:9000/competition').subscribe(result => {
       console.log(result);
     });
     */
   }
+
+  loadData() {
+    /*
+    this.competitionService.loadData().subscribe(resp => {
+      console.log(resp)
+      this.data = resp;
+    });
+    */
+    // this.data = this.competitionService.loadData();
+  }
+
+
  /*
   showConfig() {
     this.competitionService.getConfig()
@@ -100,14 +110,6 @@ export class CompetitionListComponent implements OnInit {
     this.competitionService.makeIntentionalError().subscribe(null, error => this.error = error );
   }
   */
-  loadData() {
-    this.competitionService.loadData().subscribe(resp => {
-      console.log(resp)
-      this.data = resp;
-    });
-    // this.data = this.competitionService.loadData();
-  }
-
 
 }
 /*
