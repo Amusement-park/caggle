@@ -17,8 +17,8 @@ import { HttpClient } from '@angular/common/http';
   providers: [
       // { provide: CompetitionService, useClass: CompetitionService }
      // ,{ provide: DBConfig, useValue: COMP_DB_CONFIG }
-     ,{ provide: 'isDev', useValue: true },
-     ,CompetitionService
+    //  ,{ provide: 'isDev', useValue: true },
+     CompetitionService
   ],
   styles: ['.error {color: red;}']
 })

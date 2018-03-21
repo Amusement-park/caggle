@@ -12,7 +12,7 @@ import { AccountService } from '../../../account/account.service';
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
 
-    private user = '{}'
+    private user = {}
 
     constructor(private translate: TranslateService, public router: Router, private accountService: AccountService) {
 
