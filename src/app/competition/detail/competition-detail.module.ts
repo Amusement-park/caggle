@@ -12,11 +12,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { DataComponent} from './components/data/data.component';
 
-
-import {
-    AlertComponent,
-} from './components';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -36,7 +31,6 @@ import {
     HeaderComponent,
     OverviewComponent,
     DataComponent,
-    AlertComponent
     ]
 })
 export class CompetitionDetailModule { }
