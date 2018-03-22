@@ -1,20 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Competition } from '../../../competition';
 
 @Component({
     selector: 'comp-header',
-    // templateUrl: './header.component.html',
-    template: '  <h3>" {{ competId }}"</h3> ',
+    templateUrl: './header.component.html',
+    // template: '  <h3>" {{ competId }}"</h3> ',
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
     public background: any;
-    @Input() competId: number;
+    @Input() comp: Competition;
 
     constructor(private translate: TranslateService, public router: Router) {
-
+    
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();

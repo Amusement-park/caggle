@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { CompetitionServiceProvider } from '../service/competition.service.provider'
-import { CompetitionService, Config } from '../service/competition.service'
+import { CompetitionService } from '../service/competition.service'
 import { Competition } from '../competition'
 import { HttpClient } from '@angular/common/http';
 // import { MessageService } from '../message.service';
@@ -14,21 +14,15 @@ import { HttpClient } from '@angular/common/http';
   // template: '{{ comps.__zone_symbol__value | json }}',
   templateUrl: './competition-list.component.html',
   // styleUrls: ['./competition-list.component.scss'],
-  providers: [
-      // { provide: CompetitionService, useClass: CompetitionService }
-     // ,{ provide: DBConfig, useValue: COMP_DB_CONFIG }
-     ,{ provide: 'isDev', useValue: true },
-     ,CompetitionService
-  ],
+  providers: [ CompetitionService ],
   styles: ['.error {color: red;}']
 })
 
 export class CompetitionListComponent implements OnInit {
   error: any;
   headers: string[];
-  config: Config;
   data: Object;
-  comps$: Observable<Competition[]>;
+  coms: Competition[];
   private selectedId: number;
 
   clear() {
@@ -54,7 +48,8 @@ export class CompetitionListComponent implements OnInit {
 
   comps: Promise<Competition[]>;
   ngOnInit() {
-    this.comps = this.competitionService.getComps();
+    this.getComps();
+    // console.log(this.competitionService.getComps());
     // this.loadData();
     // console.log(this.data);
     /*
@@ -69,6 +64,14 @@ export class CompetitionListComponent implements OnInit {
       console.log(result);
     });
     */
+  }
+
+  getComps(): void {
+    this.http.get('http://210.89.178.101:9000/competition').subscribe(data => {
+      console.log(data)});
+    // this.http.get('n').subscribe(data => {
+      // console.log(data)});
+    // this.competitionService.getComps().subscribe(comps => this.comps = comps);
   }
 
   loadData() {

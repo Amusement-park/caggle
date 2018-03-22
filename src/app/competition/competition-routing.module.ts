@@ -5,12 +5,8 @@ import { CompetitionListComponent } from './list/competition-list.component'
 import { CompetitionComponent } from './competition.component'
 
 const routes: Routes = [
-    {
-        path: '', component: CompetitionComponent
-        // ,children: [
-            // { path: 'list', component: CompetitionListComponent }
-        // ]
-    },
+    { path: '', component: CompetitionComponent },
+    { path: '', component: CompetitionListComponent },
     { path: 'detail/:competId', component: CompetitionDetailComponent },
     { path: 'list', component: CompetitionListComponent 
        ,children: 

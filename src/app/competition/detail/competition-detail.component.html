@@ -3,13 +3,9 @@
     <router-outlet></router-outlet>	
 </div>
 -->
-<h2> detail {{ comp }} </h2> 
-    <div *ngIf="comp$ | async as comp">
-    <h3>"{{ comp.competId }}"</h3>
-    <comp-header [competId]="comp.competId"></comp-header>
-<div>
+<div *ngIf="comp$ | async as comp">
 
-
+<comp-header [comp]="comp"></comp-header>
 <section class="competition-detail-main-container">
     <router-outlet></router-outlet>
 </section>

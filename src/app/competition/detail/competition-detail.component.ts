@@ -1,7 +1,8 @@
 import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import { slideInDownAnimation } from './animations';
 import { CompetitionService } from '../service/competition.service';
@@ -29,17 +30,33 @@ export class CompetitionDetailComponent implements OnInit {
   // @HostBinding('style.display')   display = 'block';
   // @HostBinding('style.position')  position = 'absolute';
   comp$: Observable<Competition>;
+  public background: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: CompetitionService
-  ) {}
+    private service: CompetitionService,
+    private translate: TranslateService
+  ) {
+      this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
+        this.translate.setDefaultLang('en');
+        const browserLang = this.translate.getBrowserLang();
+        this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de/) ? browserLang : 'en');
+
+        this.background = {
+             imagePath: 'assets/images/slider2.jpg',
+              label: 'headline',
+              text: 'description',
+             
+        };
+  }
 
   ngOnInit() {
+    /*
     this.comp$ = this.route.paramMap
       .switchMap((params: ParamMap) =>
         this.service.getComp(params.get('competId')));
+    */
   }
 
   gotoCompetitions(comp: Competition) {

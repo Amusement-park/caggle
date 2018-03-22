@@ -10,7 +10,6 @@ import { CompetitionDetailComponent } from './competition-detail.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { OverviewComponent } from './components/overview/overview.component';
-import { DiscussionComponent } from './components/discussion/discussion.component';
 import { DataComponent} from './components/data/data.component';
 
 
@@ -26,12 +25,15 @@ import {
     TranslateModule,
     NgbModule,
     NgbModule.forRoot(),
-    NgbDropdownModule.forRoot()
+    NgbDropdownModule.forRoot(),
   ],
-  exports: [HeaderComponent],
+  exports: [
+    HeaderComponent, 
+    OverviewComponent,
+    DataComponent,
+    ],
   declarations: [
     HeaderComponent,
-    DiscussionComponent,
     OverviewComponent,
     DataComponent,
     AlertComponent
