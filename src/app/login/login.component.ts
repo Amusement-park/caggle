@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-
         // is token exist, then goTo dashboard
         if(localStorage.getItem('token')) {
             this.router.navigate(['/dashboard'], { relativeTo: this.route });
