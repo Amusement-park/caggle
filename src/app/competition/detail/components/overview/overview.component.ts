@@ -1,7 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { routerTransition } from '../../../../router.animations';
-import { OverviewModule } from './overview.module'
 
 @Component({
   selector: 'overview',

@@ -29,7 +29,7 @@ export class CompetitionDetailComponent implements OnInit {
   // @HostBinding('@routeAnimation') routeAnimation = true;
   // @HostBinding('style.display')   display = 'block';
   // @HostBinding('style.position')  position = 'absolute';
-  comp$: Observable<Competition>;
+  comp: Competition;
   public background: any;
 
   constructor(
@@ -52,11 +52,17 @@ export class CompetitionDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getComp();
     /*
     this.comp$ = this.route.paramMap
       .switchMap((params: ParamMap) =>
         this.service.getComp(params.get('competId')));
     */
+  }
+
+  getComp(): void {
+    const id = +this.route.snapshot.paramMap.get('competId');
+    this.service.getComp(id).subscribe(comp => this.comp = comp);
   }
 
   gotoCompetitions(comp: Competition) {

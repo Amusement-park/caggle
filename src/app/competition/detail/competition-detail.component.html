@@ -1,11 +1,30 @@
 <!--
-<div [ngClass] = "'child-container'">	
-    <router-outlet></router-outlet>	
+<div *ngIf="comp">
+  <h2>{{ comp.headline | uppercase }} Details</h2>
+  <div><span>id: </span>{{comp.competId}}</div>
 </div>
+<nav>
+  <a routerLink="overview">Overview</a>
+  <a routerLink="data">Data</a>
+  <a routerLink="discussion">Discussion</a>
+</nav>
+<router-outlet></router-outlet>
 -->
-<div *ngIf="comp$ | async as comp">
-
-<comp-header [comp]="comp"></comp-header>
-<section class="competition-detail-main-container">
+<div class="page-header col-sm-8" style="margin:0 auto;">
+    <div class="card-header"> <!-- mb-3"> -->
+        <img class="img-fluid mx-auto d-block" [src]="background.imagePath"  width="100%">
+        <div *ngIf="comp">
+            <h3> {{ comp.competId }} </h3>
+            <p> {{ comp.headline }} </p>
+            <p> {{ comp.description }} </p>
+        </div>
+        <nav>
+            <a routerLink="overview">Overview</a>
+            <a routerLink="data">Data</a>
+            <a routerLink="discussion">Discussion</a>
+        </nav>
+    </div>
     <router-outlet></router-outlet>
-</section>
+</div>
+
+

@@ -22,7 +22,7 @@ export class CompetitionListComponent implements OnInit {
   error: any;
   headers: string[];
   data: Object;
-  coms: Competition[];
+  comps: Competition[];
   private selectedId: number;
 
   clear() {
@@ -46,7 +46,6 @@ export class CompetitionListComponent implements OnInit {
     }
   }
 
-  comps: Promise<Competition[]>;
   ngOnInit() {
     this.getComps();
     // console.log(this.competitionService.getComps());
@@ -67,11 +66,11 @@ export class CompetitionListComponent implements OnInit {
   }
 
   getComps(): void {
-    this.http.get('http://210.89.178.101:9000/competition').subscribe(data => {
-      console.log(data)});
-    // this.http.get('n').subscribe(data => {
-      // console.log(data)});
-    // this.competitionService.getComps().subscribe(comps => this.comps = comps);
+    // this.http.get('http://210.89.178.101:9000/competition').subscribe(data => { this.comps=data});
+    this.competitionService.getComps().subscribe(
+      comps =>  {
+        this.comps = comps
+      });
   }
 
   loadData() {

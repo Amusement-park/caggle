@@ -5,31 +5,10 @@ import { CompetitionListComponent } from './list/competition-list.component'
 import { CompetitionComponent } from './competition.component'
 
 const routes: Routes = [
-    { path: '', component: CompetitionComponent },
-    { path: '', component: CompetitionListComponent },
+    { path: '', redirectTo: '/list', pathMatch: 'full' },
     { path: 'detail/:competId', component: CompetitionDetailComponent },
-    { path: 'list', component: CompetitionListComponent 
-       ,children: 
-        [
-            {
-                path: 'edit/:detail-id',
-                component: CompetitionDetailComponent
-            }
-        ]
-    },
-    /*
-    {
-        path: 'detail/:id', component: CompetitionDetailComponent
-        ,children:
-        [
-            {
-                path: '/:id',
-                component: CompetitionDetailComponent
-            }
-        ]
-    }
-    */
-];
+    { path: 'list', component: CompetitionListComponent }
+ ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

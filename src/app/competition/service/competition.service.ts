@@ -31,16 +31,21 @@ export class CompetitionService {
   // configUrl = 'assets/config.json'
   private compsUrl = 'http://210.89.178.101:9000/competition'
   private handleError: HandleError;
+
   constructor(
-    private http: HttpClient){//, httpErrorHandler: HttpErrorHandler) {
+    private http: HttpClient) { // httpErrorHandler: HttpErrorHandler) {
     // this.handleError = httpErrorHandler.createHandleError('CompsService');
   }
 
-    /*
   getComps(): Observable<Competition[]> {
-    return this.http.get<Competition[]>(this.compsUrl)
-      .pipe(catchError(this.handleError('get Competitions', []))
-      );
+    return this.http.get<Competition[]>(this.compsUrl);
+      // .pipe(catchError(this.handleError('get Competitions', []))
+      // .pipe(catchError(this.handleError('get Competitions', [])));
   }
-    */
+
+  getComp(id: number): Observable<Competition> {
+    const url = `${this.compsUrl}/${id}`;
+    return this.http.get<Competition>(url);
+    // .pipe(tap(_ => this.log(`fetched competition id=${id}`)));
+  }
 }
