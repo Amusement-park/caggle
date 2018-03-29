@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { slideInDownAnimation } from './animations';
 import { CompetitionService } from '../service/competition.service';
 import { Competition } from '../competition';
-
+import { DataService } from './data.service';
 /*
 @Component({
   template: `<h2> detail {{ comp }} </h2> 
@@ -31,12 +31,14 @@ export class CompetitionDetailComponent implements OnInit {
   // @HostBinding('style.position')  position = 'absolute';
   comp: Competition;
   public background: any;
+  dataPassed: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: CompetitionService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private ds: DataService
   ) {
       this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
@@ -51,8 +53,13 @@ export class CompetitionDetailComponent implements OnInit {
         };
   }
 
+  ngOnDestory() {
+    this.ds.clearData();
+  }
+
   ngOnInit() {
     this.getComp();
+    this.ds.sendData(this.comp);
     /*
     this.comp$ = this.route.paramMap
       .switchMap((params: ParamMap) =>
@@ -62,7 +69,8 @@ export class CompetitionDetailComponent implements OnInit {
 
   getComp(): void {
     const id = +this.route.snapshot.paramMap.get('competId');
-    this.service.getComp(id).subscribe(comp => this.comp = comp);
+    // this.service.getComp(id).subscribe(comp => this.comp = comp);
+    this.comp = this.service.getComp(id);
   }
 
   gotoCompetitions(comp: Competition) {

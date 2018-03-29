@@ -9,7 +9,7 @@ import { DataComponent} from './detail/components/data/data.component';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: '/list', pathMatch: 'full' },
+    { path: '', component: CompetitionComponent },  
     { path: 'detail/:competId', component: CompetitionDetailComponent,
       children: [
         { path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -25,3 +25,21 @@ const routes: Routes = [
 })
 export class CompetitionRoutingModule {
 }
+
+
+/*
+const routes: Routes = [
+    { path: '', component: CompetitionComponent,
+        children: [
+        { path: '', redirectTo:'list', pathMatch: 'full'},
+       ,{ path: 'list', component: CompetitionListComponent }
+       ,{ path: 'detail/:competId', component: CompetitionDetailComponent,
+            children: [
+                { path: '', redirectTo: 'overview', pathMatch: 'full' },
+                { path: 'overview', component: OverviewComponent },
+                { path: 'data', component: DataComponent },
+            ]},
+
+        ]}
+];
+*/

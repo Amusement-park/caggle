@@ -67,10 +67,13 @@ export class CompetitionListComponent implements OnInit {
 
   getComps(): void {
     // this.http.get('http://210.89.178.101:9000/competition').subscribe(data => { this.comps=data});
+    this.comps = this.competitionService.getComps();
+    /*
     this.competitionService.getComps().subscribe(
       comps =>  {
         this.comps = comps
       });
+    */
   }
 
   loadData() {

@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { OverviewComponent } from './components/overview/overview.component';
 import { DataComponent} from './components/data/data.component';
+import { DataService } from './data.service';
 
 @NgModule({
   imports: [
@@ -31,6 +32,9 @@ import { DataComponent} from './components/data/data.component';
     HeaderComponent,
     OverviewComponent,
     DataComponent,
-    ]
+    ],
+  providers: [DataService]
 })
 export class CompetitionDetailModule { }
+
+// https://stackblitz.com/edit/passing-data-between-components-in-router-outlet-to-outside?file=app%2Fapp.routing.ts

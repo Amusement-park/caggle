@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  template: '<h1> competition component </h1>'
+  selector: 'app-competition',
+  template: `<router-outlet></router-outlet> 
+  <h1> competition component </h1>`
 })
 export class CompetitionComponent implements OnInit {
 

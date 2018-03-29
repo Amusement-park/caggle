@@ -7,7 +7,7 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'competition' },
+            { path: '', redirectTo: 'dashboard' },
             // { path: 'competition', loadChildren: '../competition/detail/competition-detail.module#CompetitionDetailModule' },
             // { path: 'competition', loadChildren: '../competition/detail/components/blank-page/blank-page.module#BlankPageModule' },
             // { path: 'competition', loadChildren: '../competition/list/competition-list.module#CompetitionListModule' },

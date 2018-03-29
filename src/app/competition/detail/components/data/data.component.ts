@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { routerTransition } from '../../../../router.animations';
+import { Competition } from '../../../competition';
 
 @Component({
   selector: 'navbar',
@@ -10,6 +11,7 @@ import { routerTransition } from '../../../../router.animations';
 })
 export class DataComponent implements OnInit {
 
+  @Input() comp: Competition;
   public background: any;
 
   constructor() { 

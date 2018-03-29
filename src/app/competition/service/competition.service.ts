@@ -10,7 +10,6 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError } from './http-error-handler.service';
 
-
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -37,15 +36,19 @@ export class CompetitionService {
     // this.handleError = httpErrorHandler.createHandleError('CompsService');
   }
 
-  getComps(): Observable<Competition[]> {
-    return this.http.get<Competition[]>(this.compsUrl);
+  getComps(): Competition[] {
+  // getComps(): Observable<Competition[]> {
+    return COMPS;
+    // return this.http.get<Competition[]>(this.compsUrl);
       // .pipe(catchError(this.handleError('get Competitions', []))
       // .pipe(catchError(this.handleError('get Competitions', [])));
   }
 
-  getComp(id: number): Observable<Competition> {
+  // getComp(id: number): Observable<Competition> {
+  getComp(id: number): Competition {
     const url = `${this.compsUrl}/${id}`;
-    return this.http.get<Competition>(url);
+    // return this.http.get<Competition>(url);
+    return COMPS[id];
     // .pipe(tap(_ => this.log(`fetched competition id=${id}`)));
   }
 }
