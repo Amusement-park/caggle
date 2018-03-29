@@ -4,9 +4,18 @@ import { CompetitionDetailComponent } from './detail/competition-detail.componen
 import { CompetitionListComponent } from './list/competition-list.component'
 import { CompetitionComponent } from './competition.component'
 
+import { OverviewComponent } from './detail/components/overview/overview.component';
+import { DataComponent} from './detail/components/data/data.component';
+
+
 const routes: Routes = [
     { path: '', redirectTo: '/list', pathMatch: 'full' },
-    { path: 'detail/:competId', component: CompetitionDetailComponent },
+    { path: 'detail/:competId', component: CompetitionDetailComponent,
+      children: [
+        { path: '', redirectTo: 'overview', pathMatch: 'full' },
+        { path: 'overview', component: OverviewComponent },
+        { path: 'data', component: DataComponent },
+      ]},
     { path: 'list', component: CompetitionListComponent }
  ];
 

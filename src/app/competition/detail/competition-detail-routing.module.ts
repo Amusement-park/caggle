@@ -8,9 +8,9 @@ import { DataComponent} from './components/data/data.component';
 export const routes : Routes = [
     { path: '', component:CompetitionDetailComponent,
     children: [
-        { path: '', redirectTo: 'detail/:competId/overview', pathMatch: 'full' },
-        { path: 'detail/:competId/overview', component: OverviewComponent },
-        { path: 'detail/:competId/data', component: DataComponent },
+        // { path: '', redirectTo: 'detail/:competId/overview', pathMatch: 'full' },
+        // { path: 'detail/:competId/overview', component: OverviewComponent },
+        // { path: 'detail/:competId/data', component: DataComponent },
     ]}
     // { path: 'comp-discussion', component: CompDiscussionComponent }
 ];
