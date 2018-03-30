@@ -2,42 +2,25 @@
     <div class="col-sm-8" style="margin:0 auto;">
         <div class="card mb-3">
             <div> {{ comps | json }} </div>
-            <!-- <button (click)="lear(); sayHi()">showConfig</button> -->
-            <!-- <button (click)="clear(); showConfigResponse()">getResponse</button> -->
 
-            <span *ngIf="config">
-                <!--<p>Heroes API URL is "{{config.heroesUrl}}"</p>-->
-                <!--<p>Textfile URL is "{{config.textfile}}"</p>-->
-                <p>Textfile URL is "{{config}}"</p>
-                <div *ngIf="headers">
-                Response headers:
-                <ul>
-                    <li *ngFor="let header of headers">{{header}}</li>
-                </ul>
-                </div>
-            </span>
-
-            <div class="card-header">N Active Competitions </div>
+            <div class="card-header">{{ comps.length }} Active Competitions </div>
             <table class="card-body table table-hover">
                 <thead>
-                <!--
                 <tr>
                     <th>#</th>
                     <th>headline</th>
                     <th>Last Name</th>
                     <th>Username</th>
                 </tr>
-                -->
                 </thead>
                 <tbody>
-                    <tr *ngFor="let comp of comps"
-                     [class.selected]="comp.competId === selectedId"> 
-                        <a routerLink="/competition/detail/{{comp.competId}}">
-                            <th scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></th>
-                            <td colspan="2"> [{{ comp.competId }}] {{ comp.headline }} , {{ comp.description }} </td>
-                            <!--<td> {{ comp.reward }}, {{ comp.regiDate }} </td>-->
-                            <td> {{ comp.headline}}, {{ comp.headline}} </td>
-                        </a>
+                    <tr *ngFor="let comp of comps" (click)="goToDetail(comp.competId)">
+                        <td scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></td>
+                        <td> [{{ comp.competId }}]</td>
+                        <td> {{ comp.headline }} </td>
+                        <td> </td>
+                        <!-- <td> {{ comp.reward }}, {{ comp.regiDate }} </td> -->
+                        <!-- <td> {{ comp.headline}}, {{ comp.headline}} </td> -->
                     </tr>
                     <!-- 
                     <tr *ngFor="let comp of comps$ | async"

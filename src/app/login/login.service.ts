@@ -13,7 +13,6 @@ export class LoginService {
   }
 
   loginUsingGithub(code){
-    
     const loginUsingGithubUrl: string = `${environment.api.zaggle}/auth/github`;
     return this.http.post(loginUsingGithubUrl, {code: code})
   }

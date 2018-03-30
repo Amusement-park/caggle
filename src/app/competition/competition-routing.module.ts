@@ -9,14 +9,14 @@ import { DataComponent} from './detail/components/data/data.component';
 
 
 const routes: Routes = [
-    { path: '', component: CompetitionComponent },  
+    { path: '', component: CompetitionListComponent },
     { path: 'detail/:competId', component: CompetitionDetailComponent,
       children: [
         { path: '', redirectTo: 'overview', pathMatch: 'full' },
         { path: 'overview', component: OverviewComponent },
         { path: 'data', component: DataComponent },
       ]},
-    { path: 'list', component: CompetitionListComponent }
+    // { path: 'list', component: CompetitionListComponent }
  ];
 
 @NgModule({

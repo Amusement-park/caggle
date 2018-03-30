@@ -6,8 +6,8 @@ import { CompetitionServiceProvider } from '../service/competition.service.provi
 import { CompetitionService } from '../service/competition.service'
 import { Competition } from '../competition'
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 // import { MessageService } from '../message.service';
-
 
 @Component({
   selector: 'app-competition-list',
@@ -32,7 +32,9 @@ export class CompetitionListComponent implements OnInit {
 
   constructor(private competitionService: CompetitionService, 
               private http: HttpClient, 
-              private route: ActivatedRoute ) {
+              private route: ActivatedRoute,
+              private router: Router
+            ) {
     // @Inject('myConfig') public myConfig: string
     // console.log(dbConfig);
     if (this.competitionService) {
@@ -84,6 +86,12 @@ export class CompetitionListComponent implements OnInit {
     });
     */
     // this.data = this.competitionService.loadData();
+  }
+
+  goToDetail(competId){
+    // /competition/detail/{{comp.competId}}
+    console.log(competId);
+    this.router.navigate([`/competition/detail/${competId}`], { relativeTo: this.route });
   }
 
 

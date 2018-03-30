@@ -11,16 +11,16 @@ import { CompetitionRoutingModule }  from './competition-routing.module';
 import { CompetitionDetailModule } from './detail/competition-detail.module';
 
 @NgModule({
-  imports: [     
+  imports: [
         CommonModule,
-		ReactiveFormsModule,
+        ReactiveFormsModule,
         CompetitionDetailModule,
         CompetitionRoutingModule,
   ], 
   declarations: [
         CompetitionComponent,
-		CompetitionListComponent,
-		CompetitionDetailComponent,
+        CompetitionListComponent,
+        CompetitionDetailComponent,
   ],
   providers: [ CompetitionService ]
 })
