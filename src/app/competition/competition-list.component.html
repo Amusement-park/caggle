@@ -1,0 +1,40 @@
+<div>
+    <div class="col-sm-8" style="margin:0 auto;">
+        <div class="card mb-3">
+            <div> {{ comps | json }} </div>
+
+            <div class="card-header">{{ comps.length }} Active Competitions </div>
+            <table class="card-body table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>headline</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let comp of comps" (click)="goToDetail(comp.competId)">
+                        <td scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></td>
+                        <td> [{{ comp.competId }}]</td>
+                        <td> {{ comp.headline }} </td>
+                        <td> </td>
+                        <!-- <td> {{ comp.reward }}, {{ comp.regiDate }} </td> -->
+                        <!-- <td> {{ comp.headline}}, {{ comp.headline}} </td> -->
+                    </tr>
+                    <!-- 
+                    <tr *ngFor="let comp of comps$ | async"
+                     [class.selected]="comp.id === selectedId"> 
+                        <a [routerLink]="['/competition/detail', comp.id]" routerLinkActivate="activate">
+                            <th scope="row"><img src="https://user-images.githubusercontent.com/11433394/34913608-265fd612-f945-11e7-8c90-cd96fca85ff9.png" alt="Smiley face" width="100" height="100"></th>
+                            <td colspan="2"> {{ comp | json }} </td>
+                            <td> {{ comp.headline }}, {{ comp.description }} </td>
+                        </a>
+                    </tr>
+                    -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<p *ngIf="error" class="error">{{error | json}}</p>

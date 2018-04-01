@@ -59,7 +59,6 @@ export class CompetitionDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getComp();
-    this.ds.sendData(this.comp);
     /*
     this.comp$ = this.route.paramMap
       .switchMap((params: ParamMap) =>
@@ -69,8 +68,13 @@ export class CompetitionDetailComponent implements OnInit {
 
   getComp(): void {
     const id = +this.route.snapshot.paramMap.get('competId');
-    // this.service.getComp(id).subscribe(comp => this.comp = comp);
-    this.comp = this.service.getComp(id);
+    this.service.getComp(id).subscribe(comp => {
+      this.comp = comp
+      this.ds.sendData(this.comp.competId);
+    });
+
+
+    // this.comp = this.service.getComp(id);
   }
 
   gotoCompetitions(comp: Competition) {

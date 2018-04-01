@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'detail/:competId', component: CompetitionDetailComponent,
       children: [
         { path: '', redirectTo: 'overview', pathMatch: 'full' },
-        { path: 'overview', component: OverviewComponent },
+        { path: 'overview', component: OverviewComponent},
         { path: 'data', component: DataComponent },
       ]},
     // { path: 'list', component: CompetitionListComponent }

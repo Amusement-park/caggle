@@ -2,6 +2,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Competition } from '../competition';
+import { CompetitionOverview } from '../competition-overview';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
@@ -36,19 +37,25 @@ export class CompetitionService {
     // this.handleError = httpErrorHandler.createHandleError('CompsService');
   }
 
-  getComps(): Competition[] {
-  // getComps(): Observable<Competition[]> {
-    return COMPS;
-    // return this.http.get<Competition[]>(this.compsUrl);
+  // getComps(): Competition[] {
+  getComps(): Observable<Competition[]> {
+    // return COMPS;
+    return this.http.get<Competition[]>(this.compsUrl);
       // .pipe(catchError(this.handleError('get Competitions', []))
       // .pipe(catchError(this.handleError('get Competitions', [])));
   }
 
-  // getComp(id: number): Observable<Competition> {
-  getComp(id: number): Competition {
+  getComp(id: number): Observable<Competition> {
+  // getComp(id: number): Competition {
     const url = `${this.compsUrl}/${id}`;
-    // return this.http.get<Competition>(url);
-    return COMPS[id];
+    return this.http.get<Competition>(url);
+    // return COMPS[id];
     // .pipe(tap(_ => this.log(`fetched competition id=${id}`)));
+  }
+
+  getOverview(id: number): Observable<CompetitionOverview> {
+    // /competition/{id}/overview
+    const url = `${this.compsUrl}/${id}/overview`;
+    return this.http.get<CompetitionOverview>(url);
   }
 }

@@ -2,9 +2,11 @@ import { Component, NgModule, OnInit, Input } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { routerTransition } from '../../../../router.animations';
 import { Competition } from '../../../competition';
-
+import { CompetitionOverview } from '../../../competition-overview';
+import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router';
 import { DataService } from '../../data.service';
 import { Subscription } from 'rxjs/Subscription';
+import { CompetitionService } from '../../../service/competition.service';
 
 @Component({
   selector: 'overview',
@@ -14,11 +16,16 @@ import { Subscription } from 'rxjs/Subscription';
   animations: [routerTransition()]
 })
 export class OverviewComponent implements OnInit {
-  comp: Competition;
+  competId: number;
+  overview: CompetitionOverview;
   public background: any;
   subscription: Subscription;
 
-  constructor(private ds: DataService) { 
+  constructor(private ds: DataService
+              ,private service: CompetitionService
+              ,private route: ActivatedRoute
+              ) 
+  { 
     this.background =  
             {
               imagePath: 'assets/images/slider2.jpg',
@@ -29,10 +36,26 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit');
+    /*
+    this.subscription = this.route
+      .data
+      .subscribe(v => console.log(v));
+     */
+
     this.subscription = this.ds.getData().subscribe(x => {
-      this.comp = x; 
-      console.log(this.comp)
+      this.competId = x; 
+      console.log('overview ocmponent', this.competId)
+      this.getCompOverview();
     });
+  }
+
+  getCompOverview(): void {
+    console.log('GetCompOverview');
+    const id = +this.competId;
+    this.service.getOverview(id).subscribe(overview => 
+      //  console.log(overview)
+      this.overview = overview
+    );
   }
 
   ngOnDestroy() {
@@ -40,4 +63,5 @@ export class OverviewComponent implements OnInit {
   }
 
 }
+
 

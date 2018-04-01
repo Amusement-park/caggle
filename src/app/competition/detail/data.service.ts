@@ -7,6 +7,7 @@ export class DataService {
     private subject = new Subject<any>();
  
     sendData(message: any) {
+        console.log('message', message);
         this.subject.next(message);
     }
  
