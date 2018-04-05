@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DiscussionComponent } from './discussion.component';
+import { DiscussionComponent } from './component/discussion.component';
 
 const routes: Routes = [
     {

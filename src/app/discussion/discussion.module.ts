@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DiscussionRoutingModule } from './discussion-routing.module';
 
-import { DiscussionComponent } from './discussion.component';
+import { DiscussionComponent } from './component/discussion.component';
+import { DiscussionService } from './service/discussion.service';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { DiscussionComponent } from './discussion.component';
     NgbAlertModule.forRoot(),
     DiscussionRoutingModule
   ],
-  declarations: [DiscussionComponent]
+  declarations: [DiscussionComponent],
+  providers: [DiscussionService]
 })
 export class DiscussionModule { }
