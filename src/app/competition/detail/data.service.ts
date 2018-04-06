@@ -4,11 +4,13 @@ import { Subject } from 'rxjs/Subject';
  
 @Injectable()
 export class DataService {
-    private subject = new Subject<any>();
+    subject = new Subject<any>();
+    temp = [];
  
     sendData(message: any) {
         console.log('message', message);
         this.subject.next(message);
+        this.temp.push(message);
     }
  
     clearData() {
@@ -16,6 +18,7 @@ export class DataService {
     }
  
     getData(): Observable<any> {
+        console.log(this.subject);
         return this.subject.asObservable();
     }
 }

@@ -71,9 +71,19 @@ export class CompetitionDetailComponent implements OnInit {
     this.service.getComp(id).subscribe(comp => {
       this.comp = comp
       this.ds.sendData(this.comp.competId);
+      console.log(this.ds.subject);
+      this.ds.subject.asObservable().subscribe(
+        data => {
+          console.log('there2')
+        }
+      )
+      console.log('there')
+      // this.ds.getData().subscribe(
+      //   data => {
+      //     console.log("there");
+      //     console.log(data);
+      //   }
     });
-
-
     // this.comp = this.service.getComp(id);
   }
 

@@ -35,12 +35,16 @@ export class OverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
     /*
     this.subscription = this.route
       .data
       .subscribe(v => console.log(v));
      */
+    // console.log("here");
+    // console.log(this.ds.subject);
+
+    console.log(this.ds.temp);
+
 
     this.subscription = this.ds.getData().subscribe(x => {
       this.competId = x; 

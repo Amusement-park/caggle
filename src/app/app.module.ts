@@ -17,7 +17,7 @@ import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { AccountModule } from './account/account.module';
 
 import { CompetitionModule } from './competition/competition.module';
-import { CompetitionDetailModule } from './competition/detail/competition-detail.module';
+// import { CompetitionDetailModule } from './competition/detail/competition-detail.module';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {

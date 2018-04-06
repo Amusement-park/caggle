@@ -11,7 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { OverviewComponent } from './components/overview/overview.component';
 import { DataComponent} from './components/data/data.component';
-import { DataService } from './data.service';
+// import { DataService } from './data.service';
 
 @NgModule({
   imports: [
@@ -33,7 +33,7 @@ import { DataService } from './data.service';
     OverviewComponent,
     DataComponent,
     ],
-  providers: [DataService]
+  // providers: [DataService]
 })
 export class CompetitionDetailModule { }
 

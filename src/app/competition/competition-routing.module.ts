@@ -7,7 +7,6 @@ import { CompetitionComponent } from './competition.component'
 import { OverviewComponent } from './detail/components/overview/overview.component';
 import { DataComponent} from './detail/components/data/data.component';
 
-
 const routes: Routes = [
     { path: '', component: CompetitionListComponent },
     { path: 'detail/:competId', component: CompetitionDetailComponent,
