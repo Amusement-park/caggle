@@ -8,15 +8,6 @@ import { slideInDownAnimation } from './animations';
 import { CompetitionService } from '../service/competition.service';
 import { Competition } from '../competition';
 import { DataService } from './data.service';
-/*
-@Component({
-  template: `<h2> detail {{ comp }} </h2> 
-    <div *ngIf="comp$ | async as comp">
-    <h3>"{{ comp.competId}}"</h3>
-    <div>
-  `
-})
-*/
 
 @Component({
   selector: 'competition-detail-layout',

@@ -35,36 +35,15 @@ export class OverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*
-    this.subscription = this.route
-      .data
-      .subscribe(v => console.log(v));
-     */
-    // console.log("here");
-    // console.log(this.ds.subject);
-
-    console.log(this.ds.temp);
-
-
-    this.subscription = this.ds.getData().subscribe(x => {
-      this.competId = x; 
-      console.log('overview ocmponent', this.competId)
-      this.getCompOverview();
-    });
-  }
-
-  getCompOverview(): void {
-    console.log('GetCompOverview');
-    const id = +this.competId;
-    this.service.getOverview(id).subscribe(overview => 
-      //  console.log(overview)
+    this.competId = +this.route.parent.snapshot.paramMap.get('competId');
+    this.service.getOverview(this.competId).subscribe(overview => 
       this.overview = overview
     );
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.subscription.unsubscribe();
+  // }
 
 }
 
