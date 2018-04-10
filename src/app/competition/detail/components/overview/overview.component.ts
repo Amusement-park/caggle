@@ -16,35 +16,19 @@ import { CompetitionService } from '../../../service/competition.service';
   animations: [routerTransition()]
 })
 export class OverviewComponent implements OnInit {
-  competId: number;
-  overview: CompetitionOverview;
-  public background: any;
-  subscription: Subscription;
+  private competId: number;
+  private overview: CompetitionOverview;
 
-  constructor(private ds: DataService
-              ,private service: CompetitionService
-              ,private route: ActivatedRoute
-              ) 
-  { 
-    this.background =  
-            {
-              imagePath: 'assets/images/slider2.jpg',
-              label: 'headline',
-              text: 'description',
-             };
+  constructor(private service: CompetitionService ,private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    // Reference: https://toddmotto.com/angular-parent-routing-params
     this.competId = +this.route.parent.snapshot.paramMap.get('competId');
     this.service.getOverview(this.competId).subscribe(overview => 
       this.overview = overview
     );
   }
-
-  // ngOnDestroy() {
-  //   this.subscription.unsubscribe();
-  // }
-
 }
 
 
