@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DiscussionComponent } from './list/component/discussion.component';
+import { DiscussionListComponent } from './list/component/discussion-list.component';
+import { DiscussionDetailComponent } from './detail/component/discussion-detail.component';
 
 const routes: Routes = [
-    {
-        path: '', component: DiscussionComponent
-    }
+    { path: '', component: DiscussionListComponent},
+    { path: ':id', component: DiscussionDetailComponent}
 ];
 
 @NgModule({

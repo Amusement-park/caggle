@@ -1,12 +1,12 @@
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { CompetitionServiceProvider } from '../service/competition.service.provider'
 import { CompetitionService } from '../service/competition.service'
 import { Competition } from '../competition'
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {  } from '@angular/router';
 // import { MessageService } from '../message.service';
 
 @Component({
@@ -87,8 +87,6 @@ export class CompetitionListComponent implements OnInit {
   }
 
   goToDetail(competId){
-    // /competition/detail/{{comp.competId}}
-    console.log(competId);
     this.router.navigate([`/competition/detail/${competId}`], { relativeTo: this.route });
   }
 

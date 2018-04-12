@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+
 import * as moment from 'moment';
+
 import { Discussion, DiscussionService }  from '../../service/discussion.service';
 
 @Component({
   selector: 'app-discussion',
-  templateUrl: './discussion.component.html',
-  styleUrls: ['./discussion.component.scss']
+  templateUrl: './discussion-list.component.html',
+  styleUrls: ['./discussion-list.component.scss']
 })
-export class DiscussionComponent implements OnInit {
+export class DiscussionListComponent implements OnInit {
 
   discussions: Discussion[] = []
 
   ngOnInit() {
   }
 
-  constructor(public discussionService: DiscussionService) {
+  constructor(public discussionService: DiscussionService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.discussionService.get()
       .subscribe(
         data => {
@@ -28,4 +34,7 @@ export class DiscussionComponent implements OnInit {
     return moment(date).fromNow();
   }
 
+  goToDetail(discusId){
+    this.router.navigate([`/discussion/${discusId}`], { relativeTo: this.route });
+  }
 }
