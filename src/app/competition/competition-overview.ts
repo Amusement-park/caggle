@@ -9,17 +9,3 @@ export class CompetitionOverview{
               ,public regiDate: string
              ) {}
 }
-
-
-/*
-{
-  "competitionOverviewId": 1,
-  "competitionId": 1,
-  "description": "description1",
-  "evaluation": "evaluation1",
-  "prizes": "prizes1",
-  "kernelsFaq": "kernels_faq1",
-  "timeline": "timeline1",
-  "regiDate": "2018-03-28T00:00:00"
-}
-*/
