@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { Discussion, DiscussionService }  from '../service/discussion.service';
+import { Discussion, DiscussionService }  from '../../service/discussion.service';
 
 @Component({
   selector: 'app-discussion',

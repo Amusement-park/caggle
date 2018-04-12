@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DiscussionRoutingModule } from './discussion-routing.module';
 
-import { DiscussionComponent } from './component/discussion.component';
+import { DiscussionComponent } from './list/component/discussion.component';
 import { DiscussionService } from './service/discussion.service';
 
 @NgModule({

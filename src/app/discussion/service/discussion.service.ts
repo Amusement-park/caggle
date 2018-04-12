@@ -1,8 +1,6 @@
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
-// import { Competition } from '../competition';
-// import { CompetitionOverview } from '../competition-overview';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
@@ -10,7 +8,6 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-// import { HttpErrorHandler, HandleError } from './http-error-handler.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,14 +15,6 @@ const httpOptions = {
     // 'Authorization': 'my-auth-token'
   })
 };
-
-// dummy data
-// const COMPS = [
-  // new Competition(1, "1" , "LEE"),
-  // new Competition(2, "1" , "LEE"),
-  // new Competition(3, "1" , "LEE")
-// ];
-// let competitionsPromise = Promise.resolve(COMPS);
 
 export class Discussion{
   constructor(public discusId: number
