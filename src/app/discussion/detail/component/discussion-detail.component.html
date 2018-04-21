@@ -19,25 +19,20 @@
 </div>
 
 <div>
-    Comments ({{ comments.size}})
+    Comments ({{ comments.length }})
 </div>
 
 <div>
-  <div class="row">
+  <div class="row" *ngFor="let comment of comments">
     <div>
-      <h1>Avatar</h1>
+      <h1>{{ comment.author }}</h1>
     </div>
     <div>
       <div>
-          Russ W•(4th in this Competition)•a day ago•
+          {{ comment.author }} {{ fromNow(comment.regDate) }}
       </div>
       <div>
-          Content
-      </div>
-      <div>
-        aasdlkjfdkljf<br>
-        asldfdkjf<br>
-        sakljfldsjf<br>
+          {{ comment.comment }}
       </div>
     </div>
   </div>

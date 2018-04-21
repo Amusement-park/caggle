@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import * as moment from 'moment';
 
 import { Discussion, DiscussionService }  from '../../service/discussion.service';
+import { Comment, CommentService } from '../../service/comment.service';
 
 @Component({
   selector: 'app-discussion-detail',
@@ -13,12 +14,14 @@ import { Discussion, DiscussionService }  from '../../service/discussion.service
 })
 export class DiscussionDetailComponent implements OnInit {
 
-  discussion: Discussion
+  discussion: Discussion = Object()
+  comments: Comment[] = []
 
   ngOnInit() {
   }
 
-  constructor(public discussionService: DiscussionService,
+  constructor(private discussionService: DiscussionService,
+    private commentService: CommentService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -29,6 +32,12 @@ export class DiscussionDetailComponent implements OnInit {
           this.discussion = data;
         }
       )
+
+    this.commentService.get('discussion', discusId).subscribe(
+      data => {
+        this.comments = data
+      }
+    )
   }
 
   fromNow(date) {
