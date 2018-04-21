@@ -1,5 +1,6 @@
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -18,6 +19,7 @@ const httpOptions = {
 
 export class Discussion{
   constructor(public discusId: number
+              ,public competitionId: number
               ,public title: string
               ,public content: string
               ,public author: string

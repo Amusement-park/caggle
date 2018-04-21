@@ -34,7 +34,8 @@ export class DiscussionListComponent implements OnInit {
     return moment(date).fromNow();
   }
 
-  goToDetail(discusId){
-    this.router.navigate([`/discussion/${discusId}`], { relativeTo: this.route });
+  goToDetail(discus){
+    const { competId, discusId } = discus
+    this.router.navigate([`/competition/detail/${competId}/discussion/${discusId}`], { relativeTo: this.route });
   }
 }

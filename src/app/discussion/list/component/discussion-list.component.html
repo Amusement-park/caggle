@@ -1,13 +1,12 @@
-
 <div>
-    <div class="col-sm-8" style="margin:0 auto;">
+    <div class="col-sm-12" style="margin:0 auto;">
         <div class="card mb-3">
             <div class="card-header"> {{ discussions.length }} topics </div>
             <table class="card-body table table-hover">
                 <thead>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let discus of discussions" (click)="goToDetail(discus.discusId)">
+                    <tr *ngFor="let discus of discussions" (click)="goToDetail(discus)">
                         <td></td>
                         <td>
                             <span>{{ discus.title }}</span><br>

@@ -1,3 +1,44 @@
-<p>
-  discussion-detail works!
-</p>
+<div class="row col-md-12">
+  <div class="col-md-2 col-sm-0 name-tile">
+      {{ discussion.author }}
+      asdf
+      asdf
+      sdf
+  </div>
+  <div class="col-md-10 content-tile">
+        <span>{{ discussion.title }}</span><br>
+        <span>{{ discussion.author }}</span> <span>{{ fromNow(discussion.regDate) }}</span>
+  </div>
+  <div class="line offset-md-2 col-12 col-md-10">
+  </div>
+  <div class="offset-md-2 col-md-10">
+    <span>
+        {{ discussion.content }}
+    </span>
+  </div>
+</div>
+
+<div>
+    Comments ({{ comments.size}})
+</div>
+
+<div>
+  <div class="row">
+    <div>
+      <h1>Avatar</h1>
+    </div>
+    <div>
+      <div>
+          Russ W•(4th in this Competition)•a day ago•
+      </div>
+      <div>
+          Content
+      </div>
+      <div>
+        aasdlkjfdkljf<br>
+        asldfdkjf<br>
+        sakljfldsjf<br>
+      </div>
+    </div>
+  </div>
+</div>

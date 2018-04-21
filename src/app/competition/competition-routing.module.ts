@@ -5,6 +5,8 @@ import { CompetitionListComponent } from './list/competition-list.component'
 
 import { OverviewComponent } from './detail/components/overview/overview.component';
 import { DataComponent} from './detail/components/data/data.component';
+import { DiscussionListComponent } from '../discussion/list/component/discussion-list.component';
+import { DiscussionDetailComponent } from '../discussion/detail/component/discussion-detail.component';
 
 const routes: Routes = [
     { path: '', component: CompetitionListComponent },
@@ -13,8 +15,9 @@ const routes: Routes = [
         { path: '', redirectTo: 'overview', pathMatch: 'full' },
         { path: 'overview', component: OverviewComponent},
         { path: 'data', component: DataComponent },
+        { path: 'discussion', component: DiscussionListComponent },
+        { path: 'discussion/:discusId', component: DiscussionDetailComponent },
       ]},
-    // { path: 'list', component: CompetitionListComponent }
  ];
 
 @NgModule({

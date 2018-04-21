@@ -4,8 +4,7 @@ import { DiscussionListComponent } from './list/component/discussion-list.compon
 import { DiscussionDetailComponent } from './detail/component/discussion-detail.component';
 
 const routes: Routes = [
-    { path: '', component: DiscussionListComponent},
-    { path: ':id', component: DiscussionDetailComponent}
+    { path: '', component: DiscussionListComponent}
 ];
 
 @NgModule({

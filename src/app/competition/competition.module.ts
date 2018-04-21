@@ -11,12 +11,15 @@ import { CompetitionRoutingModule }  from './competition-routing.module';
 import { OverviewComponent } from './detail/components/overview/overview.component';
 import { DataComponent } from './detail/components/data/data.component';
 
+import { DiscussionModule } from '../discussion/discussion.module';
+
 @NgModule({
   imports: [
         CommonModule,
         ReactiveFormsModule,
         NgbModule,
         CompetitionRoutingModule,
+        DiscussionModule,
   ], 
   declarations: [
         CompetitionListComponent,

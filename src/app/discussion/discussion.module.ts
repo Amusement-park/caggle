@@ -14,6 +14,9 @@ import { DiscussionDetailComponent } from './detail/component/discussion-detail.
     NgbAlertModule.forRoot(),
     DiscussionRoutingModule
   ],
+  exports: [
+    DiscussionListComponent
+  ],
   declarations: [DiscussionListComponent, DiscussionDetailComponent],
   providers: [DiscussionService]
 })
