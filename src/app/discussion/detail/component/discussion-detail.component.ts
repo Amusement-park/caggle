@@ -40,10 +40,6 @@ export class DiscussionDetailComponent implements OnInit {
     )
   }
 
-  fromNow(date) {
-    return moment(date).fromNow();
-  }
-
   goToDetail(discus){
     const { competId, discusId } = discus
     this.router.navigate([`/competition/detail/${competId}/discussion/${discusId}`], { relativeTo: this.route });

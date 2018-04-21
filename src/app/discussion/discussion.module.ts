@@ -7,14 +7,15 @@ import { DiscussionListComponent } from './list/component/discussion-list.compon
 import { DiscussionDetailComponent } from './detail/component/discussion-detail.component';
 import { DiscussionService } from './service/discussion.service';
 import { CommentService } from './service/comment.service';
-
+import { SharedPipesModule } from '../shared/pipes/shared-pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbCarouselModule.forRoot(),
     NgbAlertModule.forRoot(),
-    DiscussionRoutingModule
+    DiscussionRoutingModule,
+    SharedPipesModule
   ],
   exports: [
     DiscussionListComponent

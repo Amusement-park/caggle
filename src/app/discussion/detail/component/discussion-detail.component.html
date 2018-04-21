@@ -7,7 +7,7 @@
   </div>
   <div class="col-md-10 content-tile">
         <span>{{ discussion.title }}</span><br>
-        <span>{{ discussion.author }}</span> <span>{{ fromNow(discussion.regDate) }}</span>
+        <span>{{ discussion.author }}</span> <span>{{ discussion.regDate | fromNow }}</span>
   </div>
   <div class="line offset-md-2 col-12 col-md-10">
   </div>
@@ -29,7 +29,7 @@
     </div>
     <div>
       <div>
-          {{ comment.author }} {{ fromNow(comment.regDate) }}
+          {{ comment.author }} {{ comment.regDate | fromNow }}
       </div>
       <div>
           {{ comment.comment }}
