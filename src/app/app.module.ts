@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,8 +17,18 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { AccountModule } from './account/account.module';
 
+// PrimeNG
+import { InputTextModule }  from 'primeng/inputtext';
+import { ButtonModule }  from 'primeng/button';
+import { TableModule }  from 'primeng/table';
+import { DialogModule }  from 'primeng/dialog';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { CodeHighlighterModule } from 'primeng/codehighlighter';
+
+
 import { CompetitionModule } from './competition/competition.module';
 // import { CompetitionDetailModule } from './competition/detail/competition-detail.module';
+
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -43,6 +54,15 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule,
         AccountModule,
         CompetitionModule,
+
+        FormsModule,
+        TableModule,
+        InputTextModule,
+        DialogModule,
+        ProgressBarModule,
+        ButtonModule,
+        CodeHighlighterModule
+
     ],
     declarations: [
         AppComponent
