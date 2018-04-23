@@ -22,6 +22,8 @@ import { TableModule }  from 'primeng/table';
 import { DialogModule }  from 'primeng/dialog';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CodeHighlighterModule } from 'primeng/codehighlighter';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import { CodeHighlighterModule } from 'primeng/codehighlighter';
         DialogModule,
         ProgressBarModule,
         ButtonModule,
-        CodeHighlighterModule
+        CodeHighlighterModule,
+        InputTextareaModule,
+        ProgressSpinnerModule
   ], 
   declarations: [
         CompetitionListComponent,

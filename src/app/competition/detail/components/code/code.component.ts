@@ -31,13 +31,18 @@ export class CodeComponent implements OnInit {
     
     ngOnInit() {
         this.carService.getCarsSmall().then(cars => this.cars = cars);
-        this.property = "Hi";
+        this.property = "import pandas as pd";
+
         this.cols = [
             { field: 'vin', header: 'Vin' },
             { field: 'year', header: 'Year' },
             { field: 'brand', header: 'Brand' },
             { field: 'color', header: 'Color' }
         ];
+    }
+
+    handleClick() {
+      console.log('click submit');
     }
     
     showDialogToAdd() {
