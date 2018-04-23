@@ -1,4 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<div class="card mb-3">
+    <textarea class="form-control" rows="10"> {{ property }} </textarea>
+    <!-- <textarea [rows]="10" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="property" ></textarea> -->
+</div>
+<p-button label="제출" (onClick)="handleClick($event)"></p-button>
+<!-- <p-progressSpinner></p-progressSpinner> -->
+
+
+<!--The content below is only a placeholder and can be replaced.
 <p-progressBar [value]="value"></p-progressBar>
 <p-table [columns]="cols" [value]="cars" selectionMode="single" [(selection)]="selectedCar" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="10">
   <ng-template pTemplate="header" let-columns>
@@ -44,7 +52,7 @@
       </div>
   </p-footer>
 </p-dialog>
-
+-->
 
 
 

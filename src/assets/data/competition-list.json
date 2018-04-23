@@ -1,0 +1,7 @@
+[ 
+    {"competId": 1, "headline": "headline1", "description": "Orange"},
+    {"competId": 2, "headline": "headline2", "description": "Orange"},
+    {"competId": 3, "headline": "headline3", "description": "Orange"},
+    {"competId": 4, "headline": "headline4", "description": "Orange"},
+    {"competId": 5, "headline": "headline5", "description": "Orange"}
+]

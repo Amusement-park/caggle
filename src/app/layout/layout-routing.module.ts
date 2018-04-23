@@ -13,7 +13,7 @@ const routes: Routes = [
             // { path: 'competition', loadChildren: '../competition/list/competition-list.module#CompetitionListModule' },
             { path: 'competition', loadChildren: '../competition/competition.module#CompetitionModule' },
             { path: 'discussion', loadChildren: '../discussion/discussion.module#DiscussionModule' },
-            { path: 'ranking', loadChildren: '../ranking/ranking.module#RankingModule' },
+            { path: 'ranking', loadChildren: '../ranking/rank.module#RankModule' },
 
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },

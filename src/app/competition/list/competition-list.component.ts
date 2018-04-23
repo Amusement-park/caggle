@@ -2,11 +2,12 @@ import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Component, OnInit, Inject, Optional } from '@angular/core';
-import { CompetitionServiceProvider } from '../service/competition.service.provider'
-import { CompetitionService } from '../service/competition.service'
-import { Competition } from '../competition'
+// import { CompetitionServiceProvider } from '../service/competition.service.provider'
+// import { CompetitionService } from '../service/competition.service'
+// import { Competition } from '../competition'
 import { HttpClient } from '@angular/common/http';
-import {  } from '@angular/router';
+import { Competition } from './domain/comp';
+import { CompetitionListService } from './services/comp-list-service';
 // import { MessageService } from '../message.service';
 
 @Component({
@@ -14,7 +15,7 @@ import {  } from '@angular/router';
   // template: '{{ comps.__zone_symbol__value | json }}',
   templateUrl: './competition-list.component.html',
   // styleUrls: ['./competition-list.component.scss'],
-  providers: [ CompetitionService ],
+  providers: [ CompetitionListService ],
   styles: ['.error {color: red;}']
 })
 
@@ -22,7 +23,7 @@ export class CompetitionListComponent implements OnInit {
   error: any;
   headers: string[];
   data: Object;
-  comps: Competition[] = [];
+  comps: Competition[];
   private selectedId: number;
 
   clear() {
@@ -30,41 +31,19 @@ export class CompetitionListComponent implements OnInit {
     this.headers = undefined;
   }
 
-  constructor(private competitionService: CompetitionService, 
+  constructor(//private competitionService: CompetitionService, 
+              private compListService: CompetitionListService,
               private http: HttpClient, 
               private route: ActivatedRoute,
               private router: Router
             ) {
-    // @Inject('myConfig') public myConfig: string
-    // console.log(dbConfig);
-    if (this.competitionService) {
-      // console.log(competitionService.getCompetition());
-      // <p> Mercari Price Suggestion Challenge <br> Can you automatically suggest product prices to online sellers? <br> featured   1 month ago tags </p></td>
-      // <td> <p> $10,0000 <br> 2,1023 teams </p>
-      // this.competitions = this.competitionService.getCompetition();
-    }
-    else {
-      console.log('competition service is not implementation');
-    }
   }
-
+  ngOnInit() {
+    this.compListService.getCompetitionList().then(data => this.comps = data);
+  }
+  /* 
   ngOnInit() {
     this.getComps();
-    // console.log(this.competitionService.getComps());
-    // this.loadData();
-    // console.log(this.data);
-    /*
-    this.comps$ = this.route.paramMap.switchMap ((params: ParamMap) => {
-        this.selectedId = +params.get('id');
-        return this.competitionService.getComps()
-    });
-    */
-    
-    /*
-    this.http.get('http://210.89.178.101:9000/competition').subscribe(result => {
-      console.log(result);
-    });
-    */
   }
 
   getComps(): void {
@@ -75,6 +54,7 @@ export class CompetitionListComponent implements OnInit {
         this.comps = comps
       });
   }
+  */
 
   loadData() {
     /*
