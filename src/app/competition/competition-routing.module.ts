@@ -8,6 +8,7 @@ import { DataComponent} from './detail/components/data/data.component';
 import { CodeComponent} from './detail/components/code/code.component';
 import { DiscussionListComponent } from '../discussion/list/component/discussion-list.component';
 import { DiscussionDetailComponent } from '../discussion/detail/component/discussion-detail.component';
+import { DiscussionAddComponent } from '../discussion/add/discussion-add.component';
 
 const routes: Routes = [
     { path: '', component: CompetitionListComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
         { path: 'data', component: DataComponent },
         { path: 'code', component: CodeComponent },
         { path: 'discussion', component: DiscussionListComponent },
+        { path: 'discussion/add', component: DiscussionAddComponent },
         { path: 'discussion/:discusId', component: DiscussionDetailComponent },
       ]},
  ];

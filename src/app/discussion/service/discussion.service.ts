@@ -19,13 +19,13 @@ const httpOptions = {
 
 export class Discussion{
   constructor(public discusId: number
-              ,public competitionId: number
+              ,public competId: number
               ,public title: string
               ,public content: string
               ,public author: string
               ,public subject: string
-              ,public regDate: Date
-              ,public editDate: Date) {}
+              ,public regDate?: Date
+              ,public editDate?: Date) {}
 }
 
 @Injectable()

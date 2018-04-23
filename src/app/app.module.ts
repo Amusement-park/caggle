@@ -19,6 +19,7 @@ import { AccountModule } from './account/account.module';
 
 // PrimeNG
 import { InputTextModule }  from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule }  from 'primeng/button';
 import { TableModule }  from 'primeng/table';
 import { DialogModule }  from 'primeng/dialog';

@@ -27,7 +27,6 @@ export class DiscussionListComponent implements OnInit {
           this.discussions = data;
         }
       )
-    // console.log(this.discussions);
   }
 
   goToDetail(discus){

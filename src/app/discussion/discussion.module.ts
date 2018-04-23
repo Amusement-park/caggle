@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DiscussionRoutingModule } from './discussion-routing.module';
 
@@ -8,10 +9,12 @@ import { DiscussionDetailComponent } from './detail/component/discussion-detail.
 import { DiscussionService } from './service/discussion.service';
 import { CommentService } from './service/comment.service';
 import { SharedPipesModule } from '../shared/pipes/shared-pipes.module';
+import { DiscussionAddComponent } from './add/discussion-add.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     NgbCarouselModule.forRoot(),
     NgbAlertModule.forRoot(),
     DiscussionRoutingModule,
@@ -20,7 +23,7 @@ import { SharedPipesModule } from '../shared/pipes/shared-pipes.module';
   exports: [
     DiscussionListComponent
   ],
-  declarations: [DiscussionListComponent, DiscussionDetailComponent],
+  declarations: [DiscussionListComponent, DiscussionDetailComponent, DiscussionAddComponent],
   providers: [DiscussionService, CommentService]
 })
 export class DiscussionModule { }
