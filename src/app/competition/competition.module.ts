@@ -23,7 +23,6 @@ import { DialogModule }  from 'primeng/dialog';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CodeHighlighterModule } from 'primeng/codehighlighter';
 
-
 @NgModule({
   imports: [
         CommonModule,
