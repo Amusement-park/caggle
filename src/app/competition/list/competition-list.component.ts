@@ -25,6 +25,12 @@ export class CompetitionListComponent implements OnInit {
   data: Object;
   comps: Competition[];
   private selectedId: number;
+  defaultPagination: number;
+  advancedPagination: number;
+  paginationSize: number;
+  disabledPagination: number;
+  isDisabled: boolean;
+
 
   clear() {
     this.error = undefined;
@@ -37,10 +43,28 @@ export class CompetitionListComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router
             ) {
-  }
-  ngOnInit() {
-    this.compListService.getCompetitionList().then(data => this.comps = data);
-  }
+        this.defaultPagination = 1;
+        this.advancedPagination = 1;
+        this.paginationSize = 1;
+        this.disabledPagination = 1;
+        this.isDisabled = true;
+    }
+
+    ngOnInit() {
+      this.compListService.getCompetitionList().then(data => this.comps = data);
+    }
+
+    toggleDisabled() {
+        this.isDisabled = !this.isDisabled;
+    }
+    
+    goToDetail(competId){
+      this.router.navigate([`/competition/detail/${competId}`], { relativeTo: this.route });
+    }
+
+}
+
+
   /* 
   ngOnInit() {
     this.getComps();
@@ -56,20 +80,14 @@ export class CompetitionListComponent implements OnInit {
   }
   */
 
-  loadData() {
     /*
+  loadData() {
     this.competitionService.loadData().subscribe(resp => {
       console.log(resp)
       this.data = resp;
     });
     */
     // this.data = this.competitionService.loadData();
-  }
-
-  goToDetail(competId){
-    this.router.navigate([`/competition/detail/${competId}`], { relativeTo: this.route });
-  }
-
 
  /*
   showConfig() {
@@ -97,24 +115,5 @@ export class CompetitionListComponent implements OnInit {
 
   makeError() {
     this.competitionService.makeIntentionalError().subscribe(null, error => this.error = error );
-  }
-  */
-
-}
-/*
-
-
-  showConfig_v1() {
-    this.competitionService.getConfig_1()
-      .subscribe(data => this.config = {
-          heroesUrl: data['heroesUrl'],
-          textfile:  data['textfile']
-      });
-  }
-
-  showConfig_v2() {
-    this.competitionService.getConfig()
-      // clone the data object, using its known Config shape
-      .subscribe(data => this.config = { ...data });
   }
 */

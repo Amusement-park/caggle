@@ -1,7 +1,13 @@
 <div>
     <div class="col-sm-8" style="margin:0 auto;">
         <div class="card mb-3">
-            <div class="card-header"> {{ comps.length }} 의 문제 </div>
+            <div class="card-header"> {{ comps.length }} 의 문제 
+                <!--
+                <label>문제 검색</label>
+                <input class="form-control">
+                <button type="button" class="btn btn-lg btn-primary">Primary</button>
+                -->
+            </div>
             <table class="card-body table table-hover">
                 <thead>
                 <tr>
@@ -23,6 +29,14 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="col-sm-4" style="margin:0 auto;" align="center">
+        <div class="text-uppercase text-muted fs-12">maxSize = 8, rotate = true, ellipses = false</div>
+        <ngb-pagination align="center" [collectionSize]="120" [(page)]="advancedPagination" [maxSize]="7" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+        <div class="alert alert-info">
+            <b>Current page: </b>{{ advancedPagination }}
         </div>
     </div>
 </div>
