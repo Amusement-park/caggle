@@ -28,6 +28,7 @@ import { CodeHighlighterModule } from 'primeng/codehighlighter';
 
 
 import { CompetitionModule } from './competition/competition.module';
+import { UserService } from './shared/services/user.service';
 // import { CompetitionDetailModule } from './competition/detail/competition-detail.module';
 
 
@@ -72,7 +73,8 @@ export function createTranslateLoader(http: HttpClient) {
         provide: HTTP_INTERCEPTORS,
         useClass: AuthInterceptor,
         multi: true
-        }],
+        },
+        UserService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

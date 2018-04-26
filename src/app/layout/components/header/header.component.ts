@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AccountService } from '../../../account/account.service';
+import { User, UserService } from '../../../shared/services/user.service';
 
 @Component({
     selector: 'app-header',
@@ -12,9 +13,9 @@ import { AccountService } from '../../../account/account.service';
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
 
-    private user = {}
+    user = {}
 
-    constructor(private translate: TranslateService, public router: Router, private accountService: AccountService) {
+    constructor(private translate: TranslateService, public router: Router, private accountService: AccountService, private userService: UserService) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
@@ -30,15 +31,16 @@ export class HeaderComponent implements OnInit {
                 this.toggleSidebar();
             }
         });
+
+        this.accountService.getAccount()
+        .subscribe(user => {
+            this.userService.setUser(user)
+            this.user = user
+        })
+        
     }
 
     ngOnInit() {
-        const token = JSON.parse(localStorage.getItem('token'))
-
-        this.accountService.getAccount()
-            .subscribe(data => {
-                this.user = data
-            })
     }
 
     isToggled(): boolean {

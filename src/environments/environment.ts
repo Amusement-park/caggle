@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   api: {
-    // zaggle: 'http://localhost:9000'
-    zaggle: 'http://210.89.178.101:9000'
+    zaggle: 'http://localhost:9000'
+    // zaggle: 'http://210.89.178.101:9000'
   }
 };

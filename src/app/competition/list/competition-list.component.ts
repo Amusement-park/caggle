@@ -23,7 +23,7 @@ export class CompetitionListComponent implements OnInit {
   error: any;
   headers: string[];
   data: Object;
-  comps: Competition[];
+  comps: Competition[] = [];
   private selectedId: number;
   defaultPagination: number;
   advancedPagination: number;

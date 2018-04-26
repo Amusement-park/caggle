@@ -16,7 +16,7 @@
             </li>
             <li class="nav-item d-none d-xl-block">
                 <a routerLink="/discussion" [routerLinkActive]="['router-link-active']" class="nav-link" style="padding: .375rem 1rem !important;">
-                    {{ '토의' | translate }}
+                    {{ '토론' | translate }}
                 </a>
             </li>
             <li class="nav-item d-none d-xl-block">
@@ -102,7 +102,7 @@
             </li> -->
             <li class="nav-item dropdown" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-                    <i class="fa fa-language"></i> {{ 'Language' | translate }} <b class="caret"></b>
+                    <i class="fa fa-language"></i> {{ '언어' | translate }} <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu-right" ngbDropdownMenu>
                     <a class="dropdown-item" href="javascript:void(0)" (click)="changeLang('en')">
