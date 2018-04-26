@@ -27,7 +27,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="navbar-right">
-                        <button class="btn btn-primary" (click)="goToAddDiscussion()">Add</button>
+                        <button class="btn btn-primary" [hidden]="!isShowAddDiscussionButton" (click)="goToAddDiscussion()">Add</button>
                     </li>
                 </ul>
             </div>

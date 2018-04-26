@@ -1,6 +1,7 @@
 import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { filter } from 'rxjs/operator/filter';
 import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -23,6 +24,7 @@ export class CompetitionDetailComponent implements OnInit {
   comp: Competition;
   public background: any;
   dataPassed: any;
+  isShowAddDiscussionButton: Boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,6 +44,14 @@ export class CompetitionDetailComponent implements OnInit {
               text: 'description',
              
         };
+
+        this.router.events.subscribe(event => {
+          if(event instanceof NavigationEnd && event.url.search('discussion') != -1) {
+            this.isShowAddDiscussionButton = true;
+          } else {
+            this.isShowAddDiscussionButton = false;
+          }
+        });
   }
 
   ngOnDestory() {
