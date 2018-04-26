@@ -15,29 +15,27 @@ export class HeaderComponent implements OnInit {
 
     user = {}
 
-    constructor(private translate: TranslateService, public router: Router, private accountService: AccountService, private userService: UserService) {
+    constructor(private translate: TranslateService
+        , public router: Router
+        , private accountService: AccountService
+        , private userService: UserService) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
         this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de/) ? browserLang : 'en');
 
-        this.router.events.subscribe(val => {
-            if (
-                val instanceof NavigationEnd &&
-                window.innerWidth <= 992 &&
-                this.isToggled()
-            ) {
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd && window.innerWidth <= 992 && this.isToggled()) {
                 this.toggleSidebar();
             }
         });
 
         this.accountService.getAccount()
-        .subscribe(user => {
-            this.userService.setUser(user)
-            this.user = user
-        })
-        
+            .subscribe(user => {
+                this.userService.setUser(user)
+                this.user = user
+            })
     }
 
     ngOnInit() {

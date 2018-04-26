@@ -1,22 +1,18 @@
 <div class="row col-md-12">
-  <div class="col-md-2 col-sm-0 name-tile">
-    <img src=>
-
-  </div>
-  <div class="col-md-10 content-tile">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="토론 제목" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="title">
-      </div>
-  </div>
-  <div class="line offset-md-2 col-12 col-md-10"></div>
-  <div class="offset-md-2 col-md-10">
-    <div class="input-group">
-      <textarea class="form-control" aria-label="With textarea"></textarea>
+    <div class="col-md-2 col-sm-0 name-tile">
+        <img [src]="this.user.avatarUrl" class="img-thumbnail img-fluid">
     </div>
-    <!-- <textarea pInputTextarea [(ngModel)]="content"></textarea> -->
-  </div>
-  <div class="offset-md-2 col-md-10">
-      <button (click)="addDiscussion()">등록하기</button>
-      <button (click)="backToDiscussion()">취소하기</button>
-  </div>
+    <div class="col-md-10 content-tile">
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="토론 제목" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                [(ngModel)]="title">
+        </div>
+        <div class="input-group mb-3">
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+        <div class="float-right mb-3">
+            <button class="btn btn-primary" (click)="addDiscussion()">등록하기</button>
+            <button class="btn btn-warning" (click)="backToDiscussion()">취소하기</button>
+        </div>
+    </div>
 </div>

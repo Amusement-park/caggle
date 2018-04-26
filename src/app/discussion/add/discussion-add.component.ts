@@ -13,12 +13,15 @@ export class DiscussionAddComponent implements OnInit {
 
   title: string = '';
   content: string = '';
-  user: User = new User(0, '', '');
+  user: User;
 
   constructor(private discussionService: DiscussionService
-    ,private userService: UserService
-    ,private route: ActivatedRoute
-    ,private router: Router) { }
+    , private userService: UserService
+    , private route: ActivatedRoute
+    , private router: Router) {
+    this.user = this.userService.getUser();
+    console.log(this.user);
+  }
 
   ngOnInit() {
   }
@@ -33,7 +36,7 @@ export class DiscussionAddComponent implements OnInit {
     )
   }
 
-  backToDiscussion(){
+  backToDiscussion() {
     const competId = +this.route.parent.snapshot.paramMap.get('competId');
     this.router.navigate([`/competition/detail/${competId}/discussion`], { relativeTo: this.route });
   }

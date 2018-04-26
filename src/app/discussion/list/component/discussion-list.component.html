@@ -1,7 +1,7 @@
-<div class="container">
-    <div class="col-sm-12" style="margin:0 auto;">
+<div [ngClass]="{'container': isInContainer}">
+    <div style="margin:0 auto;">
         <div class="card mb-3">
-            <div class="card-header"> {{ discussions.length }} topics </div>
+            <div class="card-header"> {{ discussions.length }} 개의 토론 </div>
             <table class="card-body table table-hover">
                 <thead>
                 </thead>

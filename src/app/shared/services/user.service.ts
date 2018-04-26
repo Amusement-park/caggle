@@ -11,11 +11,13 @@ export class User{
 export class UserService{
   constructor() {}
 
+  private KEY: string = 'user'
+
   getUser(): User{
-    return JSON.parse(localStorage.getItem('user'))
+    return JSON.parse(localStorage.getItem(this.KEY))
   }
 
   setUser(user){
-    localStorage.setItem('token', JSON.stringify(user));
+    localStorage.setItem(this.KEY, JSON.stringify(user));
   }
 }

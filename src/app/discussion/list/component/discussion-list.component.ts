@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap, NavigationEnd } from '@angular/router';
 
 import * as moment from 'moment';
 
@@ -13,6 +13,7 @@ import { Discussion, DiscussionService }  from '../../service/discussion.service
 export class DiscussionListComponent implements OnInit {
 
   discussions: Discussion[] = []
+  isInContainer: boolean = false;
 
   ngOnInit() {
   }
@@ -23,6 +24,14 @@ export class DiscussionListComponent implements OnInit {
   ) {
     const competId = +this.route.parent.snapshot.paramMap.get('competId');
 
+    this.router.events.subscribe(event => {
+      if(event instanceof NavigationEnd && event.url.search('competition') == -1) {
+        this.isInContainer = true;
+      } else {
+        this.isInContainer = false;
+      }
+    });
+    
     // Value 0 is in header
     if(competId == 0) {
       this.discussionService.get().subscribe(
