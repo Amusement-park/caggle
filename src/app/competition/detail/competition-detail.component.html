@@ -1,18 +1,5 @@
-<!--
-<div *ngIf="comp">
-  <h2>{{ comp.headline | uppercase }} Details</h2>
-  <div><span>id: </span>{{comp.competId}}</div>
-</div>
-<nav>
-  <a routerLink="overview">Overview</a>
-  <a routerLink="data">Data</a>
-  <a routerLink="discussion">Discussion</a>
-</nav>
-<router-outlet></router-outlet>
--->
-
 <div class="page-header col-sm-8" style="margin:0 auto;">
-    <div class="card-header"> <!-- mb-3"> -->
+    <div class="card-header">
         <img class="img-fluid mx-auto d-block" [src]="background.imagePath"  width="100%">
         <div *ngIf="comp">
             <h3> {{ comp.competId }} </h3>
@@ -36,6 +23,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="discussion">Discussion</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="navbar-right">
+                        <button class="btn btn-primary" (click)="goToAddDiscussion()">Add</button>
                     </li>
                 </ul>
             </div>

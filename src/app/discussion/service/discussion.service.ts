@@ -2,9 +2,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
@@ -34,6 +32,12 @@ export class DiscussionService {
 
   get(): Observable<Discussion[]>{
     return this.http.get<Discussion[]>(`${environment.api.zaggle}/discussion`);
+  }
+
+  getByCompetitionId(id): Observable<Discussion[]>{
+    let params = new HttpParams();
+    params = params.append('competitionId', id);
+    return this.http.get<Discussion[]>(`${environment.api.zaggle}/discussion`, {params: params});
   }
 
   getById(id): Observable<Discussion>{

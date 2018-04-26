@@ -21,12 +21,22 @@ export class DiscussionListComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.discussionService.get()
-      .subscribe(
+    const competId = +this.route.parent.snapshot.paramMap.get('competId');
+
+    // Value 0 is in header
+    if(competId == 0) {
+      this.discussionService.get().subscribe(
         data => {
           this.discussions = data;
         }
       )
+    } else {
+      this.discussionService.getByCompetitionId(competId).subscribe(
+        data => {
+          this.discussions = data;
+        }
+      )
+    }
   }
 
   goToDetail(discus){

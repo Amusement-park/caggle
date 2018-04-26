@@ -61,28 +61,19 @@ export class CompetitionDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('competId');
     this.service.getComp(id).subscribe(comp => {
       this.comp = comp
-      this.ds.sendData(this.comp.competId);
-      console.log(this.ds.subject);
-      this.ds.subject.asObservable().subscribe(
-        data => {
-          console.log('there2')
-        }
-      )
-      console.log('there')
-      // this.ds.getData().subscribe(
-      //   data => {
-      //     console.log("there");
-      //     console.log(data);
-      //   }
     });
-    // this.comp = this.service.getComp(id);
   }
 
   gotoCompetitions(comp: Competition) {
-    let compId= comp? comp.competId: null;
+    let compId = comp? comp.competId: null;
     // Pass along the hero id if available
     // so that the HeroList component can select that hero.
     // Include a junk 'foo' property for fun.
     this.router.navigate(['/heroes', { id: compId, foo: 'foo' }]);
+  }
+
+  goToAddDiscussion(){
+    const id = +this.route.snapshot.paramMap.get('competId');
+    this.router.navigate([`/competition/detail/${id}/discussion/add`], { relativeTo: this.route });
   }
 }
