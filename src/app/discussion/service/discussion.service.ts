@@ -22,7 +22,7 @@ export class Discussion{
               ,public content: string
               ,public author: string
               ,public subject: string
-              ,public regDate?: Date
+              ,public regiDate?: Date
               ,public editDate?: Date) {}
 }
 

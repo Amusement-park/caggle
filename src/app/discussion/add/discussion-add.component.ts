@@ -20,7 +20,6 @@ export class DiscussionAddComponent implements OnInit {
     , private route: ActivatedRoute
     , private router: Router) {
     this.user = this.userService.getUser();
-    console.log(this.user);
   }
 
   ngOnInit() {

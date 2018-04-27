@@ -1,38 +1,28 @@
 <div class="row col-md-12">
-  <div class="col-md-2 col-sm-0 name-tile">
-      {{ discussion.author }}
-      asdf
-      asdf
-      sdf
-  </div>
-  <div class="col-md-10 content-tile">
-        <span>{{ discussion.title }}</span><br>
-        <span>{{ discussion.author }}</span> <span>{{ discussion.regDate | fromNow }}</span>
-  </div>
-  <div class="line offset-md-2 col-12 col-md-10"></div>
-  <div class="offset-md-2 col-md-10">
-    <span>
-        {{ discussion.content }}
-    </span>
-  </div>
-</div>
-
-<div>
-    Comments ({{ comments.length }})
-</div>
-
-<div>
-  <div class="row" *ngFor="let comment of comments">
-    <div>
-      <h1>{{ comment.author }}</h1>
+    <div class="col-md-2 col-sm-0 name-tile">
+        <img [src]="this.user.avatarUrl" class="img-thumbnail img-fluid">
     </div>
-    <div>
-      <div>
-          {{ comment.author }} {{ comment.regDate | fromNow }}
-      </div>
-      <div>
-          {{ comment.comment }}
-      </div>
+    <div class="col-md-10 content-tile">
+        <div class="mb-3 media-body">
+            <h3 class="mt-0">{{ discussion.title }}</h3>
+            <p>
+                <span>{{ discussion.author }}</span> <span>{{ discussion.regiDate | fromNow }}</span>
+            </p>
+            {{ discussion.content }}
+        </div>
     </div>
-  </div>
+</div>
+<div class="row col-md-12 comment-tile">
+    <div class="col-md-12">
+        <span>댓글 ({{comments.length }})</span>
+    </div>
+</div>
+<div *ngFor="let comment of comments">
+    <div class="media">
+        <img class="align-self-start img-thumbnail img-fluid mr-3" [src]="this.user.avatarUrl" alt="Generic placeholder image">
+        <div class="media-body col-md-12">
+            <p><span>{{ comment.author }}</span> <span>{{ comment.regiDate | fromNow }}</span></p>
+            <p>{{ comment.comment }}</p>
+        </div>
+    </div>
 </div>

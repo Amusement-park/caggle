@@ -10,5 +10,29 @@
 }
 
 .content-tile{
+  border: 1px solid;
+  border-radius: 0.5em;
+  border-color: darkgray;
   background-color: white;
+}
+
+.comment-tile{
+  padding: 20px 0px;
+}
+
+.media{
+  padding: 10px 0px;
+
+  img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .media-body{
+    position: relative;
+    border: 1px solid;
+    border-radius: 0.5em;
+    border-color: darkgray;
+    background-color: white;
+  }
 }

@@ -6,6 +6,7 @@ import * as moment from 'moment';
 
 import { Discussion, DiscussionService }  from '../../service/discussion.service';
 import { Comment, CommentService } from '../../service/comment.service';
+import { User, UserService } from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-discussion-detail',
@@ -16,6 +17,7 @@ export class DiscussionDetailComponent implements OnInit {
 
   discussion: Discussion = Object()
   comments: Comment[] = []
+  user: User;
 
   ngOnInit() {
   }
@@ -23,8 +25,10 @@ export class DiscussionDetailComponent implements OnInit {
   constructor(private discussionService: DiscussionService,
     private commentService: CommentService,
     private route: ActivatedRoute,
+    private userService: UserService,
     private router: Router
   ) {
+    this.user = this.userService.getUser();
     const discusId = +this.route.snapshot.paramMap.get('discusId');
     this.discussionService.getById(discusId)
       .subscribe(
