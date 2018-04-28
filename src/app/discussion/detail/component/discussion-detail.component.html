@@ -4,7 +4,14 @@
     </div>
     <div class="col-md-10 content-tile">
         <div class="mb-3 media-body">
-            <h3 class="mt-0">{{ discussion.title }}</h3>
+            <h3>
+                {{ discussion.title }}
+                <span class="h5"><button class="btn btn-link" (click)="edit(discussion)" >수정하기</button></span>
+            </h3>
+            <!-- <p>
+                <span class="">{{ discussion.title }}</span>
+                <a class="btn btn-link"></a>
+            </p> -->
             <p>
                 <span>{{ discussion.author }}</span> <span>{{ discussion.regiDate | fromNow }}</span>
             </p>

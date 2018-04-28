@@ -9,7 +9,7 @@ import { DiscussionDetailComponent } from './detail/component/discussion-detail.
 import { DiscussionService } from './service/discussion.service';
 import { CommentService } from './service/comment.service';
 import { SharedPipesModule } from '../shared/pipes/shared-pipes.module';
-import { DiscussionAddComponent } from './add/discussion-add.component';
+import { DiscussionModifyComponent } from './modify/discussion-modify.component';
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { DiscussionAddComponent } from './add/discussion-add.component';
   exports: [
     DiscussionListComponent
   ],
-  declarations: [DiscussionListComponent, DiscussionDetailComponent, DiscussionAddComponent],
+  declarations: [DiscussionListComponent, DiscussionDetailComponent, DiscussionModifyComponent],
   providers: [DiscussionService, CommentService]
 })
 export class DiscussionModule { }

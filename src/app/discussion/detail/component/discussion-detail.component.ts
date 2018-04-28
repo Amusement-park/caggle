@@ -11,7 +11,7 @@ import { User, UserService } from '../../../shared/services/user.service';
 @Component({
   selector: 'app-discussion-detail',
   templateUrl: './discussion-detail.component.html',
-  styleUrls: ['./discussion-detail.component.scss']
+styleUrls: ['./discussion-detail.component.scss']
 })
 export class DiscussionDetailComponent implements OnInit {
 
@@ -47,5 +47,10 @@ export class DiscussionDetailComponent implements OnInit {
   goToDetail(discus){
     const { competId, discusId } = discus
     this.router.navigate([`/competition/detail/${competId}/discussion/${discusId}`], { relativeTo: this.route });
+  }
+
+  edit(discus){
+    const { competId, discusId } = discus
+    this.router.navigate([`/competition/detail/${competId}/discussion/${discusId}/edit`], { relativeTo: this.route });
   }
 }

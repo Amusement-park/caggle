@@ -13,7 +13,7 @@ export class Comment{
     ,public commentType: string
     ,public comment: string
     ,public author: string
-    ,public regDate: Date
+    ,public regiDate: Date
     ,public editDate: Date) {}
 }
 
