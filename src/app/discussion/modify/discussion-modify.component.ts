@@ -58,6 +58,12 @@ export class DiscussionModifyComponent implements OnInit {
   }
 
   modifyDiscussion() {
+    const competId = +this.route.parent.snapshot.paramMap.get('competId');
+    this.discussionService.modify(this.discussion).subscribe(
+      data => {
+        this.router.navigate([`/competition/detail/${competId}/discussion/${this.discussion.discusId}`], { relativeTo: this.route });
+      }
+    )
   }
 
   backToDiscussion() {

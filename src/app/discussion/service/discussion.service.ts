@@ -49,6 +49,6 @@ export class DiscussionService {
   }
 
   modify(discussion: Discussion): Observable<Discussion>{
-    return this.http.put<Discussion>(`${environment.api.zaggle}/discussion`, discussion);
+    return this.http.put<Discussion>(`${environment.api.zaggle}/discussion/${discussion.discusId}`, discussion);
   }
 }
