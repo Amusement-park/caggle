@@ -16,4 +16,10 @@ export class LoginService {
     const loginUsingGithubUrl: string = `${environment.api.zaggle}/auth/github`;
     return this.http.post(loginUsingGithubUrl, {code: code})
   }
+
+  refreshToken(){
+    const refreshTokenUrl: string = `${environment.api.zaggle}/auth/token`;
+    const token = JSON.parse(localStorage.getItem('token'));
+    return this.http.patch(refreshTokenUrl, {refreshToken: token.refreshToken})
+  }
 }

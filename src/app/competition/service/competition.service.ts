@@ -11,6 +11,8 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError } from './http-error-handler.service';
 
+import { environment } from '../../../environments/environment';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -29,7 +31,8 @@ let competitionsPromise = Promise.resolve(COMPS);
 @Injectable()
 export class CompetitionService {
   // configUrl = 'assets/config.json'
-  private compsUrl = 'http://210.89.178.101:9000/competition'
+  // private compsUrl = 'http://210.89.178.101:9000/competition'
+  private compsUrl = `${environment.api.zaggle}/competition`
   private handleError: HandleError;
 
   constructor(

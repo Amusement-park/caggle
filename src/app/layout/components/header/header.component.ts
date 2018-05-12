@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AccountService } from '../../../account/account.service';
+import { LoginService } from '../../../login/login.service';
 import { User, UserService } from '../../../shared/services/user.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class HeaderComponent implements OnInit {
     constructor(private translate: TranslateService
         , public router: Router
         , private accountService: AccountService
-        , private userService: UserService) {
+        , private userService: UserService
+        , private loginService: LoginService) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
@@ -36,6 +38,13 @@ export class HeaderComponent implements OnInit {
                 this.userService.setUser(user)
                 this.user = user
             })
+
+        const REFRESH_TIME_INTERVAL = 570000
+        setInterval(() => {
+            loginService.refreshToken().subscribe(data => {
+                localStorage.setItem('token', JSON.stringify(data));
+            });
+        }, REFRESH_TIME_INTERVAL);
     }
 
     ngOnInit() {
