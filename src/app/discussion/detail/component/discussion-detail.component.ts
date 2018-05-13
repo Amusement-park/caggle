@@ -44,13 +44,20 @@ export class DiscussionDetailComponent implements OnInit {
     )
   }
 
-  goToDetail(discus){
-    const { competId, discusId } = discus
+  goToDetail(discussion){
+    const { competId, discusId } = discussion
     this.router.navigate([`/competition/detail/${competId}/discussion/${discusId}`], { relativeTo: this.route });
   }
 
-  edit(discus){
-    const { competId, discusId } = discus
+  edit(discussion){
+    const { competId, discusId } = discussion
     this.router.navigate([`/competition/detail/${competId}/discussion/${discusId}/edit`], { relativeTo: this.route });
+  }
+
+  delete(discussion){
+    this.discussionService.delete(discussion)
+      .subscribe(data => {
+        console.log('success');
+      })
   }
 }

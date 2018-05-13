@@ -51,4 +51,8 @@ export class DiscussionService {
   modify(discussion: Discussion): Observable<Discussion>{
     return this.http.put<Discussion>(`${environment.api.zaggle}/discussion/${discussion.discusId}`, discussion);
   }
+
+  delete(discussion: Discussion): Observable<Discussion>{
+    return this.http.delete<Discussion>(`${environment.api.zaggle}/discussion/${discussion.discusId}`);
+  }
 }
