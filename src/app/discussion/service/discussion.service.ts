@@ -20,8 +20,7 @@ export class Discussion{
               ,public competId: number
               ,public title: string
               ,public content: string
-              ,public author: string
-              ,public subject: string
+              ,public userId: number
               ,public regiDate?: Date
               ,public editDate?: Date) {}
 }

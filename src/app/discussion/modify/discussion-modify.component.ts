@@ -11,6 +11,7 @@ import { User, UserService } from '../../shared/services/user.service';
 })
 export class DiscussionModifyComponent implements OnInit {
 
+  competId: number;
   discussion: Discussion = Object();
   user: User;
 
@@ -22,6 +23,9 @@ export class DiscussionModifyComponent implements OnInit {
     , private route: ActivatedRoute
     , private router: Router) {
     this.user = this.userService.getUser();
+
+    this.competId = +this.route.parent.snapshot.paramMap.get('competId');
+    this.discussion.competId = this.competId;
 
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd) {
@@ -43,31 +47,22 @@ export class DiscussionModifyComponent implements OnInit {
   }
 
   addDiscussion() {
-    const competId = +this.route.parent.snapshot.paramMap.get('competId');
-    
-    this.discussion.discusId = 0;
-    this.discussion.competId = competId;
-    this.discussion.author = 'todo-author';
-    this.discussion.subject = 'todo-subject';
-
     this.discussionService.save(this.discussion).subscribe(
       data => {
-        this.router.navigate([`/competition/detail/${competId}/discussion/${data.discusId}`], { relativeTo: this.route });
+        this.router.navigate([`/competition/detail/${this.competId}/discussion/${data.discusId}`], { relativeTo: this.route });
       }
     )
   }
 
   modifyDiscussion() {
-    const competId = +this.route.parent.snapshot.paramMap.get('competId');
     this.discussionService.modify(this.discussion).subscribe(
       data => {
-        this.router.navigate([`/competition/detail/${competId}/discussion/${this.discussion.discusId}`], { relativeTo: this.route });
+        this.router.navigate([`/competition/detail/${this.competId}/discussion/${this.discussion.discusId}`], { relativeTo: this.route });
       }
     )
   }
 
   backToDiscussion() {
-    const competId = +this.route.parent.snapshot.paramMap.get('competId');
-    this.router.navigate([`/competition/detail/${competId}/discussion`], { relativeTo: this.route });
+    this.router.navigate([`/competition/detail/${this.competId}/discussion`], { relativeTo: this.route });
   }
 }
